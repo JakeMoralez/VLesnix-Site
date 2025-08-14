@@ -1,0 +1,91 @@
+
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Выбор сервера — Vlesnix Guard</title>
+    <link rel="icon" href="logo.png" type="image/png">
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@700&family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+</head>
+<body class="dashboard-page">
+    <div id="particles-bg"></div>
+    <div class="preloader" id="dashboard-preloader">
+        <div class="preloader-content"><img src="logo.png" alt="Загрузка..." class="preloader-logo"><div class="spinner"></div></div>
+    </div>
+    <header class="header-transparent">
+        <nav>
+                <div class="nav-left"><a href="/" class="logo"><img src="logo.png" alt="Vlesnix Guard Logo"></a></div>
+                <div class="nav-center">
+                    <a href="/#features">О боте</a>
+                    <a href="news.html">Новости</a>
+                    <a href="team.html">Команда</a>
+                    <a href="docs.html">Документация</a>
+                    <a href="https://discord.gg/pzD2w4x5Hk" target="_blank">Сервер поддержки</a>
+                </div>
+                <div class="nav-right" id="auth-container">
+                    <!-- JS вставит сюда кнопку "Войти" или аватар -->
+                </div>
+            </nav>
+    </header>
+    <div class="content-wrapper">
+        <main class="dashboard-main">
+            <h1 class="section-title">Панель управления</h1>
+            <p class="section-subtitle">Выберите сервер для настройки или пригласите бота на новый.</p>
+            <div class="search-container">
+                <svg class="search-icon" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
+                <input type="text" id="server-search-input" placeholder="Поиск сервера по названию...">
+            </div>
+            <section id="servers-list">
+                <div class="servers-grid" id="servers-grid">
+                    <!-- JS вставит сюда серверы -->
+                    <div class="loader-container">
+                        <p class="loader">Загрузка серверов...</p>
+                    </div>
+                </div>
+            </section>
+        </main>
+    </div>
+     <footer>
+        <div class="footer-grid">
+            <div class="footer-about">
+                <div class="footer-logo-group">
+                    <img src="logo.png" alt="Logo" class="footer-avatar">
+                    <span class="footer-logo-text">Vlesnix Guard</span>
+                </div>
+                <p>Мы не являемся аффилированным лицом компании Discord Inc.</p>
+                <span>© 2025 Vlesnix Guard</span>
+            </div>
+            <div class="footer-links-group">
+                <div class="footer-column">
+                    <h4>Ссылки</h4>
+                    <ul>
+                        <li><a href="https://discord.gg/pzD2w4x5Hk" target="_blank">Сервер поддержки</a></li>
+                        <li><a href="docs.html">Документация</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h4>Правовая информация</h4>
+                    <ul>
+                        <li><a href="terms.html">Условия использования</a></li>
+                        <li><a href="privacy.html">Политика конфиденциальности</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-actions"><button id="theme-switcher" class="theme-switcher"><svg viewBox="0 0 24 24" fill="currentColor" height="1em" width="1em"><path d="M12 18a6 6 0 110-12 6 6 0 010 12zM12 20a8 8 0 100-16 8 8 0 000 16zM12 3a1 1 0 011 1v2a1 1 0 11-2 0V4a1 1 0 011-1zM4 11a1 1 0 011 1h2a1 1 0 110 2H5a1 1 0 01-1-1zM17 11a1 1 0 011 1h2a1 1 0 110 2h-2a1 1 0 01-1-1zM12 19a1 1 0 011 1v2a1 1 0 11-2 0v-2a1 1 0 011-1z"></path></svg></button></div>
+        </div>
+    </footer>
+    <div class="cookie-consent-banner" id="cookie-consent-banner">
+        <div class="cookie-consent-content">
+            <p class="cookie-text">Мы используем файлы cookie для улучшения вашего опыта. Оставаясь на сайте, вы соглашаетесь с нашей <a href="/privacy.html" target="_blank">политикой конфиденциальности</a>.</p>
+            <div class="cookie-actions">
+                <button class="cookie-btn" id="cookie-accept-btn">Принять</button>
+                <button class="cookie-btn secondary" id="cookie-decline-btn">Отклонить</button>
+            </div>
+        </div>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/particles.js@2.0.0/particles.min.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>

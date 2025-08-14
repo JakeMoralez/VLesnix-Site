@@ -1,0 +1,129 @@
+
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vlesnix Guard — Надёжный защитник вашего Discord сервера</title>
+    <link rel="icon" href="logo.png" type="image/png">
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@700&family=Inter:wght@400;600&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div id="particles-bg"></div>
+    <header>
+        <nav>
+            <div class="nav-left">
+                <a href="/" class="logo"><img src="logo.png" alt="Vlesnix Guard Logo"></a>
+            </div>
+            <div class="nav-center">
+                <a href="/#features">О боте</a>
+                <a href="news.html">Новости</a>
+                <a href="team.html">Команда</a>
+                <a href="docs.html">Документация</a>
+                <a href="https://discord.gg/pzD2w4x5Hk" target="_blank">Сервер поддержки</a>
+            </div>
+            <div class="nav-right" id="auth-container">
+                <!-- JS вставит сюда кнопку "Войти" или аватар с меню -->
+            </div>
+        </nav>
+    </header>
+    <div class="content-wrapper">
+        <main>
+            <section id="hero" class="hero-section">
+                <h1 class="main-title reveal">Vlesnix Guard</h1>
+                <h2 class="hero-subtitle reveal">Ваш надёжный защитник в Discord</h2>
+                <p class="reveal">Современный бот с комплексной защитой от рейдов, спама и нежелательных пользователей.</p>
+                <div class="hero-buttons reveal">
+                    <a href="https://discord.com/oauth2/authorize?client_id=1336778419199021118" target="_blank" class="cta-button">Добавить на сервер</a>
+                    <a href="#features" class="cta-button-secondary">Узнать больше</a>
+                </div>
+            </section>
+
+            <section id="features" class="features-section">
+                <h2 class="section-title reveal">Наши модули</h2>
+                <div class="features-grid">
+                    <!-- Тикеты -->
+                    <div class="feature-card-large reveal">
+                        <div class="card-header"><div class="card-icon"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 22h16a2 2 0 0 0 2-2V4a2 2 0 0 0-2-2H8a2 2 0 0 0-2 2v16L4 22z"></path><path d="M16 10h-4a2 2 0 1 0 0 4h4v-4z"></path></svg></div><h3>Тикет система</h3></div>
+                        <p>Создавайте приватные каналы для общения с пользователями и решения их проблем.</p>
+                    </div>
+                    <!-- Верификация -->
+                    <div class="feature-card-large reveal">
+                        <div class="card-header"><div class="card-icon"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path><path d="m9 12 2 2 4-4"></path></svg></div><h3>Верификация</h3></div>
+                        <p>Защитите сервер от ботов, требуя от новых участников пройти проверку.</p>
+                    </div>
+                    <!-- Репорты -->
+                    <div class="feature-card-large reveal">
+                         <div class="card-header"><div class="card-icon"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 15s1-1 4-1 5 2 8 2 4-1 4-1V3s-1 1-4 1-5-2-8-2-4 1-4 1z"></path><line x1="4" y1="22" x2="4" y2="15"></line></svg></div><h3>Репорты</h3></div>
+                        <p>Позвольте участникам легко сообщать о нарушениях прямо вам в личные сообщения или специальный канал.</p>
+                    </div>
+                    <!-- Наказания -->
+                     <div class="feature-card-large reveal">
+                        <div class="card-header"><div class="card-icon"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m14.5 12.5-5-5-5 5"></path><path d="m19.5 7.5-5-5-5 5"></path><path d="M12 22V7"></path><path d="m5 22-3-3"></path><path d="m19 22 3-3"></path></svg></div><h3>Система наказаний</h3></div>
+                        <p>Автоматизированные и ручные инструменты для выдачи предупреждений, мутов и банов.</p>
+                    </div>
+                     <!-- Ролеплей и свадьбы -->
+                    <div class="feature-card-large reveal">
+                        <div class="card-header"><div class="card-icon"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.76 0-3 .5-4.5 2-1.5-1.5-2.74-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.3 1.5 4.05 3 5.5l7 7Z"></path></svg></div><h3>Ролеплей</h3></div>
+                        <p>Добавьте веселья на сервер с помощью команд для взаимодействия, включая свадьбы.</p>
+                    </div>
+                    <!-- Логи -->
+                    <div class="feature-card-large reveal">
+                        <div class="card-header"><div class="card-icon"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 12h-4l-3 9L9 3l-3 9H2"></path></svg></div><h3>Логи</h3></div>
+                        <p>Записывайте все важные действия на сервере в специальный канал для полного контроля.</p>
+                    </div>
+                    <!-- Дни Рождения -->
+                     <div class="feature-card-large reveal">
+                        <div class="card-header"><div class="card-icon"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"></path></svg></div><h3>Дни рождения</h3></div>
+                        <p>Поздравляйте участников вашего сервера автоматически, создавая праздничную атмосферу.</p>
+                    </div>
+                </div>
+            </section>
+        </main>
+
+        <footer>
+            <div class="footer-grid">
+                <div class="footer-about">
+                    <div class="footer-logo-group">
+                        <img src="logo.png" alt="Logo" class="footer-avatar">
+                        <span class="footer-logo-text">Vlesnix Guard</span>
+                    </div>
+                    <p>Мы не являемся аффилированным лицом компании Discord Inc.</p>
+                    <span>© 2025 Vlesnix Guard</span>
+                </div>
+                <div class="footer-links-group">
+                    <div class="footer-column">
+                        <h4>Ссылки</h4>
+                        <ul>
+                            <li><a href="https://discord.gg/pzD2w4x5Hk" target="_blank">Сервер поддержки</a></li>
+                            <li><a href="docs.html">Документация</a></li>
+                        </ul>
+                    </div>
+                     <div class="footer-column">
+                        <h4>Правовая информация</h4>
+                        <ul>
+                            <li><a href="terms.html">Условия использования</a></li>
+                            <li><a href="privacy.html">Политика конфиденциальности</a></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="footer-actions"><button id="theme-switcher" class="theme-switcher"><svg viewBox="0 0 24 24" fill="currentColor" height="1em" width="1em"><path d="M12 18a6 6 0 110-12 6 6 0 010 12zM12 20a8 8 0 100-16 8 8 0 000 16zM12 3a1 1 0 011 1v2a1 1 0 11-2 0V4a1 1 0 011-1zM4 11a1 1 0 011 1h2a1 1 0 110 2H5a1 1 0 01-1-1zM17 11a1 1 0 011 1h2a1 1 0 110 2h-2a1 1 0 01-1-1zM12 19a1 1 0 011 1v2a1 1 0 11-2 0v-2a1 1 0 011-1z"></path></svg></button></div>
+            </div>
+        </footer>
+    </div>
+    <div class="cookie-consent-banner" id="cookie-consent-banner">
+        <div class="cookie-consent-content">
+            <p class="cookie-text">Мы используем файлы cookie для улучшения вашего опыта. Оставаясь на сайте, вы соглашаетесь с нашей <a href="/privacy.html" target="_blank">политикой конфиденциальности</a>.</p>
+            <div class="cookie-actions">
+                <button class="cookie-btn" id="cookie-accept-btn">Принять</button>
+                <button class="cookie-btn secondary" id="cookie-decline-btn">Отклонить</button>
+            </div>
+        </div>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/particles.js@2.0.0/particles.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.9.1/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.9.1/ScrollTrigger.min.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>
