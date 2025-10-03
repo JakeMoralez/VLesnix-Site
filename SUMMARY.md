@@ -1,7 +1,6 @@
 # Table of contents
 
 * [Добро пожаловать](README.md)
-* [Page](page.md)
 
 ## Основные команды
 
