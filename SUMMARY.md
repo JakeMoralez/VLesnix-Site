@@ -1,11 +1,13 @@
 # Table of contents
 
-* [Добро пожаловать!](README.md)
+* [Добро пожаловать](README.md)
+* [Page](page.md)
 
 ## Основные команды
 
 * [Профиль и информация](osnovnye-komandy/profil-i-informaciya.md)
 * [Обратная связь](osnovnye-komandy/obratnaya-svyaz.md)
+* [Значки](osnovnye-komandy/znachki.md)
 
 ## Модули
 
