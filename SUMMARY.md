@@ -1,3 +1,3 @@
 # Table of contents
 
-* [Введение](README.md)
+* [Добро пожаловать!](README.md)
