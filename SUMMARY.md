@@ -9,16 +9,20 @@
 
 ## Модули
 
-* [Развлечения](moduli/razvlecheniya.md)
-* [Role Play](moduli/role-play.md)
-* [Браки](moduli/braki.md)
-* [Лайки](moduli/laiki.md)
+* [Приветствия и прощания](moduli/privetstviya-i-proshaniya.md)
+* [Управление ролями](moduli/upravlenie-rolyami.md)
+* [Тикеты](moduli/tikety.md)
 * [Идеи](moduli/idei.md)
-* [Дни рождения](moduli/dni-rozhdeniya.md)
 * [Модерация](moduli/moderaciya.md)
 * [Автомодерация](moduli/avtomoderaciya.md)
-* [Тикеты](moduli/tikety.md)
-* [Управление ролями](moduli/upravlenie-rolyami.md)
+* [Логирование](moduli/logirovanie.md)
+* [Дни рождения](moduli/dni-rozhdeniya.md)
+* [Приватные комнаты](moduli/privatnye-komnaty.md)
+* [Браки](moduli/braki.md)
+* [Role Play](moduli/role-play.md)
+* [Лайки](moduli/laiki.md)
+* [Развлечения](moduli/razvlecheniya.md)
+* [Page](moduli/page.md)
 
 ***
 
