@@ -12,8 +12,10 @@
 * [Приветствия и прощания](moduli/privetstviya-i-proshaniya.md)
 * [Управление ролями](moduli/upravlenie-rolyami.md)
 * [Тикеты](moduli/tikety.md)
+* [Верификация](moduli/verifikaciya.md)
 * [Идеи](moduli/idei.md)
 * [Модерация](moduli/moderaciya.md)
+* [Уведомления](moduli/uvedomleniya.md)
 * [Автомодерация](moduli/avtomoderaciya.md)
 * [Логирование](moduli/logirovanie.md)
 * [Дни рождения](moduli/dni-rozhdeniya.md)
@@ -22,7 +24,6 @@
 * [Role Play](moduli/role-play.md)
 * [Лайки](moduli/laiki.md)
 * [Развлечения](moduli/razvlecheniya.md)
-* [Page](moduli/page.md)
 
 ***
 

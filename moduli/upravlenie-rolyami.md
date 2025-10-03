@@ -83,7 +83,7 @@ icon: sparkles
 
 * **Как найти:** `/settings roles` -> кнопка `Связанные роли`
 
-<div><figure><img src="../.gitbook/assets/image (2) (1).png" alt=""><figcaption></figcaption></figure> <figure><img src="../.gitbook/assets/image.png" alt=""><figcaption></figcaption></figure></div>
+<div><figure><img src="../.gitbook/assets/image (2) (1).png" alt=""><figcaption></figcaption></figure> <figure><img src="../.gitbook/assets/image (1).png" alt=""><figcaption></figcaption></figure></div>
 
 #### 4. Межсерверные роли
 
@@ -94,6 +94,6 @@ icon: sparkles
 1. **Односторонний:** Изменения с **Главного** сервера копируются на **Подчинённый**. Идеально, если у вас есть основной сервер и его "филиалы".
 2. **Двусторонний:** Серверы становятся равноправными **Партнёрами**. Изменение ролей или ника на одном сервере мгновенно отражается на другом, и наоборот.
 
-<figure><img src="../.gitbook/assets/image (1).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../.gitbook/assets/image (1) (1).png" alt=""><figcaption></figcaption></figure>
 
 * **Как найти:** `/settings roles` -> кнопка `Межсерверные роли`
