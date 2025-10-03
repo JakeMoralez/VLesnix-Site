@@ -28,7 +28,7 @@ icon: lightbulb
 
 Для настройки модуля используйте команду `/settings ideas`.
 
-<figure><img src="../.gitbook/assets/image (1).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../.gitbook/assets/image (1) (1).png" alt=""><figcaption></figcaption></figure>
 
 Доступны следующие параметры:
 

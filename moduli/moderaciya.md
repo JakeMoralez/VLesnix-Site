@@ -62,7 +62,7 @@ icon: shield-check
 
 Для настройки модуля используйте команду `/settings moderation`.
 
-<figure><img src="../.gitbook/assets/image.png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../.gitbook/assets/image (3).png" alt=""><figcaption></figcaption></figure>
 
 Доступны следующие параметры:
 

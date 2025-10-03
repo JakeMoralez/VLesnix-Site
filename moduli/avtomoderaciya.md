@@ -49,7 +49,7 @@ icon: robot
 
 Для настройки модуля используйте команду `/settings automod`.
 
-<figure><img src="../.gitbook/assets/image (2).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../.gitbook/assets/image (2) (1).png" alt=""><figcaption></figcaption></figure>
 
 1. **Общие настройки:** Здесь вы можете указать канал для логов автомодерации, роль для пинга, а также глобальные исключения (роли и каналы, на которые автомод не будет действовать).
 2. **Настройка фильтров:** Выберите любой из фильтров, чтобы настроить его параметры:
@@ -58,4 +58,4 @@ icon: robot
    * Установить длительность тайм-аута.
    * Задать специфичные для фильтра лимиты или исключения (например, **белый список доменов** для скам-фильтра).
 
-<figure><img src="../.gitbook/assets/image (3).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../.gitbook/assets/image (3) (1).png" alt=""><figcaption></figcaption></figure>
