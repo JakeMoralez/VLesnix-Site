@@ -1,0 +1,112 @@
+
+
+.team-page-container {
+    /* padding-top: 80px; removed */
+}
+
+.team-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+    margin-top: 2rem;
+}
+
+.team-card {
+    background-color: var(--bg-content);
+    border: 1px solid var(--border-color);
+    border-radius: 20px;
+    text-align: center;
+    overflow: hidden;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    padding-top: 2rem;
+    transition: transform var(--transition-smooth), box-shadow var(--transition-smooth), border-color var(--transition-smooth);
+}
+.team-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 15px 35px rgba(0,0,0,0.1), 0 0 30px var(--accent-glow);
+    border-color: var(--cta-color-start);
+}
+
+.team-card-avatar {
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+    border: 4px solid var(--bg); /* Use page background for a cutout effect */
+    margin: 0 auto;
+    position: relative;
+    z-index: 1;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+}
+
+.team-card-body {
+    padding: 1rem 1.5rem 1.5rem;
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.team-card-name {
+    font-family: var(--font-accent);
+    font-size: 1.5rem;
+    margin: 1rem 0 0.25rem 0;
+}
+
+.team-card-role {
+    font-size: 0.8rem;
+    font-weight: 700;
+    padding: 0.25rem 0.85rem;
+    border-radius: 50px;
+    text-transform: uppercase;
+    display: inline-block;
+    margin-bottom: 1rem;
+}
+
+.team-card-role.founder {
+    color: #fff;
+    background: linear-gradient(45deg, var(--cta-color-start), var(--cta-color-end));
+}
+
+.team-card-role.moderator {
+    color: var(--text-secondary);
+    background-color: var(--bg);
+    border: 1px solid var(--border-color);
+}
+
+.team-card-description {
+    font-size: 0.95rem;
+    color: var(--text-secondary);
+    flex-grow: 1;
+    margin-bottom: 1.5rem; /* Ensure space before socials */
+}
+
+.team-card-socials {
+    padding: 1rem;
+    border-top: 1px solid var(--border-color);
+    background-color: transparent;
+    display: flex;
+    justify-content: center;
+    gap: 1.5rem;
+    margin-top: auto; /* Pushes socials to the bottom */
+}
+
+.team-card-socials a {
+    color: var(--text-secondary);
+    transition: color var(--transition-fast), transform var(--transition-fast);
+}
+
+.team-card-socials a:hover {
+    color: var(--text-primary);
+    transform: scale(1.2);
+}
+
+@media (max-width: 768px) {
+    .team-page-container {
+        /* padding-top: 60px; removed */
+    }
+    .team-grid {
+        grid-template-columns: 1fr;
+    }
+}

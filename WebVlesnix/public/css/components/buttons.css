@@ -1,0 +1,115 @@
+
+
+/* Buttons */
+.cta-button, .cta-button-secondary, .save-module-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    padding: 0.8rem 1.5rem;
+    border-radius: 50px;
+    font-weight: 600;
+    font-size: 1rem;
+    border: 2px solid transparent;
+    cursor: pointer;
+    text-align: center;
+    transition: all var(--transition-smooth);
+}
+
+.cta-button, .save-module-btn {
+    background: linear-gradient(90deg, var(--cta-color-start), var(--cta-color-end), var(--cta-color-start));
+    background-size: 200% auto;
+    color: #fff;
+    transition: transform var(--transition-fast), box-shadow var(--transition-fast), background-position var(--transition-smooth);
+}
+
+.cta-button:hover, .save-module-btn:hover {
+    background-position: 100% 0;
+    transform: translateY(-3px);
+    box-shadow: 0 5px 20px var(--accent-glow);
+    color: #fff; /* Ensure text remains white */
+}
+
+.cta-button-secondary {
+    background-color: transparent;
+    color: var(--cta-color-start);
+    border-color: var(--cta-color-start);
+}
+
+.cta-button-secondary:hover {
+    background-color: var(--cta-color-start);
+    border-color: var(--cta-color-start);
+    color: #fff;
+    transform: translateY(-3px);
+    box-shadow: 0 5px 20px var(--accent-glow);
+}
+
+.cta-button:active, .save-module-btn:active, .cta-button-secondary:active {
+    transform: translateY(1px) scale(0.98);
+    box-shadow: 0 2px 10px var(--accent-glow);
+    transition-duration: 0.1s;
+}
+
+.cta-button-secondary.danger {
+    color: var(--danger-color);
+    border-color: var(--danger-color);
+}
+.cta-button-secondary.danger:hover {
+    background-color: var(--danger-color);
+    border-color: var(--danger-color);
+    color: #fff;
+    box-shadow: 0 5px 20px rgba(231, 76, 60, 0.3);
+}
+
+/* Auth Login Button */
+.cta-login-button {
+    background-color: var(--cta-color-start);
+    color: white;
+    padding: 0.6rem 1.5rem;
+    border-radius: 50px;
+    font-weight: 600;
+    transition: all var(--transition-fast);
+    display: inline-block;
+}
+
+.cta-login-button:hover {
+    color: white;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 15px var(--accent-glow);
+    background-color: var(--cta-color-end);
+}
+
+/* Cookie Buttons */
+.cookie-btn {
+    padding: 0.5rem 1.25rem;
+    border-radius: 50px;
+    font-weight: 600;
+    font-size: 0.9rem;
+    border: 2px solid transparent;
+    cursor: pointer;
+    background: var(--cta-color-start);
+    color: #fff;
+    transition: transform var(--transition-fast), box-shadow var(--transition-fast), background-color var(--transition-fast);
+}
+
+.cookie-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 15px -5px var(--accent-glow);
+    background-color: var(--cta-color-end);
+}
+
+.cookie-btn:active {
+    transform: translateY(1px) scale(0.98);
+    box-shadow: 0 2px 8px -5px var(--accent-glow);
+}
+
+.cookie-btn.secondary {
+    background: transparent;
+    border-color: var(--border-color);
+    color: var(--text-primary);
+}
+
+.cookie-btn.secondary:hover {
+    background-color: var(--border-color);
+    border-color: var(--border-color);
+}

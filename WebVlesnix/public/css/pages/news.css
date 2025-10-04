@@ -1,0 +1,527 @@
+
+
+.news-page-container {
+    max-width: 1100px;
+    margin: 0 auto;
+}
+
+.news-filter-bar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 1.5rem;
+    margin-bottom: 2.5rem;
+    flex-wrap: wrap;
+}
+
+.filter-tags-container {
+    display: flex;
+    gap: 0.5rem;
+    flex-wrap: wrap;
+}
+
+.filter-tag-button {
+    padding: 0.5rem 1rem;
+    border: 1px solid var(--border-color);
+    background-color: var(--bg-content);
+    color: var(--text-secondary);
+    font-weight: 600;
+    border-radius: 50px;
+    cursor: pointer;
+    transition: all var(--transition-fast);
+}
+
+.filter-tag-button.active {
+    background: linear-gradient(90deg, var(--cta-color-start), var(--cta-color-end));
+    border-color: transparent;
+    color: #fff;
+    box-shadow: 0 3px 10px var(--accent-glow);
+}
+
+.filter-tag-button:not(.active):hover {
+    color: var(--text-primary);
+    border-color: var(--cta-color-start);
+}
+
+.filter-tag-button:active {
+    transform: translateY(1px) scale(0.98);
+}
+
+
+.filter-admin-tools {
+    display: flex;
+    gap: 1rem;
+    align-items: center;
+    margin-left: auto;
+}
+
+.filter-search-container {
+    position: relative;
+    min-width: 280px;
+}
+
+.filter-search-container .search-icon {
+    position: absolute;
+    top: 50%;
+    left: 1rem;
+    transform: translateY(-50%);
+    color: var(--text-secondary);
+    z-index: 1;
+}
+
+#news-search-input {
+    width: 100%;
+    padding: 0.7rem 1rem 0.7rem 3rem;
+    border-radius: 50px;
+    border: 1px solid var(--border-color);
+    background-color: var(--bg-content);
+    color: var(--text-primary);
+    font-size: 0.95rem;
+    transition: border-color var(--transition-fast), box-shadow var(--transition-fast);
+}
+
+#news-search-input:focus {
+    outline: none;
+    border-color: var(--cta-color-start);
+    box-shadow: 0 0 0 3px var(--accent-glow);
+}
+
+
+.news-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 2rem;
+}
+
+.news-card-header {
+    padding: 1.25rem 1.5rem;
+    border-bottom: 1px solid var(--border-color);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+}
+
+.news-card-date {
+    font-size: 0.9rem;
+    font-weight: 600;
+    color: var(--text-secondary);
+}
+
+.news-card-tags {
+    display: flex;
+    gap: 0.5rem;
+    flex-wrap: wrap;
+}
+
+.tag {
+    font-size: 0.75rem;
+    font-weight: 700;
+    padding: 0.25rem 0.75rem;
+    border-radius: 50px;
+    text-transform: uppercase;
+}
+
+.tag.tag-major {
+    background-color: var(--tag-major-bg);
+    color: var(--tag-major-text);
+}
+
+.tag.tag-feature {
+    background-color: var(--tag-feature-bg);
+    color: var(--tag-feature-text);
+}
+
+.tag.tag-security {
+    background-color: var(--tag-security-bg);
+    color: var(--tag-security-text);
+}
+
+.tag.tag-fix {
+    background-color: var(--tag-fix-bg);
+    color: var(--tag-fix-text);
+}
+
+.tag.tag-update {
+    background-color: var(--tag-update-bg);
+    color: var(--tag-update-text);
+}
+
+.news-card-body {
+    padding: 1.5rem;
+    position: relative;
+}
+
+.news-card-admin-actions {
+    position: absolute;
+    top: 1.25rem;
+    right: 1.5rem;
+    display: flex;
+    gap: 0.75rem;
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(-10px);
+    transition: all var(--transition-smooth);
+}
+
+.news-card:hover .news-card-admin-actions {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+}
+
+.admin-action-btn {
+    background: var(--bg);
+    border: 1px solid var(--border-color);
+    border-radius: 50%;
+    width: 36px;
+    height: 36px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: var(--text-secondary);
+    cursor: pointer;
+    transition: all var(--transition-fast);
+}
+.admin-action-btn svg {
+    width: 18px;
+    height: 18px;
+}
+.admin-action-btn:hover {
+    color: var(--text-primary);
+    border-color: var(--cta-color-start);
+}
+.admin-action-btn.delete-btn:hover {
+    background-color: var(--danger-bg-hover);
+    color: var(--danger-hover-color);
+    border-color: var(--danger-color);
+}
+
+.news-card-body h3 {
+    font-family: var(--font-accent);
+    font-size: 1.6rem;
+    margin-top: 0;
+    margin-bottom: 1rem;
+    padding-right: 6rem; /* Space for admin buttons */
+}
+
+.news-card-body h4 {
+    font-size: 1.1rem;
+    margin-top: 1.5rem;
+    margin-bottom: 0.75rem;
+}
+
+.news-card-body p,
+.news-card-body ul,
+.news-card-body ol {
+    margin-bottom: 1em;
+}
+
+.news-card-body > *:last-child {
+    margin-bottom: 0;
+}
+
+.news-card-body ul {
+    padding-left: 20px;
+    color: var(--text-secondary);
+}
+
+.news-card-body ul li {
+    margin-bottom: 0.5rem;
+}
+
+.news-card-body code {
+    background-color: var(--bg);
+    padding: 2px 5px;
+    border-radius: 4px;
+    font-family: monospace;
+}
+
+.news-grid .loader-container {
+    display: flex;
+    justify-content: center;
+    padding: 4rem 0;
+}
+
+.empty-state {
+    text-align: center;
+    padding: 4rem 2rem;
+    background-color: var(--bg-content);
+    border: 1px dashed var(--border-color);
+    border-radius: 12px;
+    margin-top: 2rem;
+}
+
+.empty-state-icon {
+    color: var(--text-secondary);
+    margin-bottom: 1rem;
+}
+
+.empty-state-icon svg {
+    width: 48px;
+    height: 48px;
+    opacity: 0.5;
+}
+
+.empty-state h3 {
+    font-family: var(--font-accent);
+    color: var(--text-primary);
+}
+
+.empty-state p {
+    color: var(--text-secondary);
+    max-width: 400px;
+    margin: 0.5rem auto 0 auto;
+}
+
+/* --- Inline Editor Styles --- */
+
+.news-editor-card {
+    padding: 1.5rem;
+    overflow: hidden;
+}
+
+.form-group {
+    margin-bottom: 1.25rem;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 0.25rem;
+    font-weight: 600;
+    font-size: 0.9rem;
+}
+.form-group label[for="news-content"] {
+    margin-bottom: 0.5rem; /* Reduced from 0.75rem for a tighter look */
+}
+
+
+.form-group input[type="text"],
+.form-group input[type="datetime-local"] {
+    width: 100%;
+    padding: 0.8rem 1rem;
+    border-radius: 8px;
+    border: 1px solid var(--border-color);
+    background-color: var(--bg);
+    color: var(--text-primary);
+    font-size: 1rem;
+    transition: border-color var(--transition-fast), box-shadow var(--transition-fast);
+}
+.dark-theme .form-group input[type="datetime-local"] { color-scheme: dark; }
+
+.form-group input[type="text"]:focus,
+.form-group input[type="datetime-local"]:focus {
+    outline: none;
+    border-color: var(--cta-color-start);
+    box-shadow: 0 0 0 3px var(--accent-glow);
+}
+.form-row {
+    display: flex;
+    gap: 1.5rem;
+    align-items: flex-start;
+}
+.form-row .form-group {
+    flex: 1;
+}
+
+.tag-selection {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+}
+
+.tag-checkbox {
+    cursor: pointer;
+}
+
+.tag-checkbox input {
+    display: none;
+}
+
+.tag-checkbox .tag {
+    transition: all var(--transition-fast);
+    opacity: 0.6;
+}
+
+.tag-checkbox:hover .tag {
+    opacity: 0.8;
+}
+
+.tag-checkbox input:checked + .tag {
+    opacity: 1;
+    transform: scale(1.08);
+    box-shadow: 0 0 0 2px var(--cta-color-start);
+}
+
+.tag-checkbox:active .tag {
+    transform: scale(0.98);
+}
+
+.editor-footer {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    gap: 1rem;
+    margin-top: 1.5rem;
+}
+
+.form-error-message {
+    color: var(--danger-color);
+    font-size: 0.9rem;
+    min-height: 1.2em;
+    margin-right: auto;
+    text-align: left;
+}
+
+/* ============================================= */
+/* ==     EasyMDE Editor Styles Overrides     == */
+/* ============================================= */
+
+/* --- Container and Structure --- */
+.EasyMDEContainer {
+    border-radius: 8px;
+    border: 1px solid var(--border-color);
+    transition: border-color var(--transition-fast), box-shadow var(--transition-fast);
+}
+.EasyMDEContainer.active {
+    border-color: var(--cta-color-start);
+    box-shadow: 0 0 0 3px var(--accent-glow);
+}
+.EasyMDEContainer .editor-toolbar {
+    border-top-left-radius: 7px;
+    border-top-right-radius: 7px;
+    border-bottom: 1px solid var(--border-color);
+    padding: 4px;
+    background-color: var(--bg);
+}
+.EasyMDEContainer .editor-toolbar button,
+.EasyMDEContainer .editor-toolbar a {
+    border: none !important;
+    border-radius: 4px;
+    transition: background-color var(--transition-fast), color var(--transition-fast), transform var(--transition-fast);
+    color: var(--text-secondary) !important;
+}
+.EasyMDEContainer .editor-toolbar button:hover,
+.EasyMDEContainer .editor-toolbar a:hover {
+    background: var(--border-color) !important;
+    color: var(--text-primary) !important;
+    transform: translateY(-1px);
+}
+.EasyMDEContainer .editor-toolbar button:active,
+.EasyMDEContainer .editor-toolbar a:active {
+    transform: scale(0.92);
+    transition-duration: 0.1s;
+}
+.EasyMDEContainer .editor-toolbar button.active,
+.EasyMDEContainer .editor-toolbar a.active {
+    background: var(--border-color) !important;
+    color: var(--text-primary) !important;
+}
+.EasyMDEContainer .editor-toolbar .separator {
+    border-left: 1px solid var(--border-color);
+    border-right: none !important;
+    margin: 4px 8px !important;
+}
+.EasyMDEContainer .CodeMirror {
+    border: none !important;
+    border-bottom-left-radius: 7px;
+    border-bottom-right-radius: 7px;
+    padding: 1rem;
+    background-color: var(--bg-content);
+    color: var(--text-primary);
+}
+.EasyMDEContainer .cm-s-easymde {
+    font-family: var(--font-primary), sans-serif !important;
+    font-size: 1rem;
+    line-height: 1.6;
+    color: var(--text-primary);
+}
+.EasyMDEContainer .editor-statusbar {
+    border-top: 1px solid var(--border-color);
+    border-bottom-left-radius: 7px;
+    border-bottom-right-radius: 7px;
+    font-size: 0.8rem;
+    padding: 6px 12px !important;
+    min-height: auto;
+    height: auto;
+    background-color: var(--bg);
+    color: var(--text-secondary);
+}
+
+/* --- Common Editor Internals --- */
+.EasyMDEContainer .CodeMirror-cursor { border-left: 1px solid var(--text-primary) !important; }
+.EasyMDEContainer .editor-preview {
+    padding: 1rem;
+    background-color: var(--bg-content);
+}
+.EasyMDEContainer .editor-preview h1, .EasyMDEContainer .editor-preview h2, .EasyMDEContainer .editor-preview h3 {
+    color: var(--text-primary);
+    border-bottom: 1px solid var(--border-color);
+}
+.EasyMDEContainer .editor-preview p, .EasyMDEContainer .editor-preview li { color: var(--text-secondary); }
+.EasyMDEContainer .editor-preview a { color: var(--cta-color-start); }
+.EasyMDEContainer .editor-preview code {
+    background-color: var(--bg);
+    padding: 2px 5px;
+    border-radius: 4px;
+    border: 1px solid var(--border-color);
+}
+.EasyMDEContainer .editor-preview pre {
+    background-color: var(--bg);
+    padding: 1rem;
+    border-radius: 8px;
+    border: 1px solid var(--border-color);
+}
+.EasyMDEContainer .editor-preview pre code { background-color: transparent; border: none; padding: 0; }
+.cm-s-easymde .cm-header { color: var(--cta-color-start); }
+.cm-s-easymde .cm-link { color: var(--cta-color-end); }
+.cm-s-easymde .cm-quote { color: #2ecc71; }
+.cm-s-easymde .cm-keyword { color: #e74c3c; }
+
+/* === CUSTOM SCROLLBAR FIX === */
+.EasyMDEContainer .CodeMirror-vscrollbar {
+    -webkit-appearance: none;
+    width: 14px;
+    background-color: transparent;
+}
+.EasyMDEContainer .CodeMirror-vscrollbar::-webkit-scrollbar {
+    -webkit-appearance: none;
+    width: 14px;
+}
+.EasyMDEContainer .CodeMirror-vscrollbar::-webkit-scrollbar-track {
+    background-color: var(--bg-content);
+}
+.EasyMDEContainer .CodeMirror-vscrollbar::-webkit-scrollbar-thumb {
+    background-color: var(--border-color);
+    border-radius: 10px;
+    border: 4px solid var(--bg-content);
+    background-clip: content-box;
+    transition: background-color var(--transition-fast);
+}
+.EasyMDEContainer .CodeMirror-vscrollbar::-webkit-scrollbar-thumb:hover {
+    background-color: var(--cta-color-start);
+}
+
+/* --- Responsive Adjustments --- */
+@media (max-width: 768px) {
+    .news-filter-bar {
+        flex-direction: column;
+        align-items: stretch;
+    }
+    .filter-admin-tools {
+        width: 100%;
+        margin-top: 1rem;
+        flex-direction: column;
+        align-items: stretch;
+        gap: 1rem;
+    }
+    .filter-search-container {
+        flex-grow: 1;
+        min-width: unset;
+    }
+    .form-row {
+        flex-direction: column;
+        gap: 0;
+    }
+}

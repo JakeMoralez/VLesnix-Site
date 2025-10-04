@@ -1,0 +1,138 @@
+
+
+/* Advantage Cards (Homepage) */
+.advantage-card {
+    background-color: transparent;
+    border: 1px solid var(--border-color);
+    border-radius: 12px;
+    padding: 2rem;
+    text-align: center;
+    transition: all var(--transition-smooth);
+}
+.advantage-card:hover {
+    background-color: var(--bg-content);
+    transform: translateY(-5px);
+    box-shadow: 0 8px 25px rgba(0,0,0,0.1);
+    border-color: var(--cta-color-start);
+}
+.advantage-card .card-icon {
+    color: var(--cta-color-start);
+    margin-bottom: 1rem;
+    display: inline-block;
+}
+.advantage-card .card-icon svg {
+    width: 40px;
+    height: 40px;
+}
+.advantage-card h3 {
+    font-family: var(--font-accent);
+    font-size: 1.2rem;
+    margin-bottom: 0.5rem;
+}
+
+
+/* Server Cards (Dashboard) */
+.server-card {
+    background-color: var(--bg-content);
+    border: 1px solid var(--border-color);
+    border-radius: 12px;
+    display: flex;
+    flex-direction: column;
+    transition: all var(--transition-smooth);
+    color: var(--text-primary);
+    overflow: hidden;
+}
+.server-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 10px 30px rgba(0,0,0,0.12), 0 0 25px var(--accent-glow);
+    border-color: var(--cta-color-start);
+}
+.server-card.is-available:hover {
+    border-color: #2ecc71;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.12), 0 0 25px rgba(46, 204, 113, 0.3);
+}
+.server-card-content {
+    display: flex;
+    align-items: center;
+    padding: 1.25rem;
+    gap: 1rem;
+    flex-grow: 1;
+}
+.server-card-avatar {
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    flex-shrink: 0;
+}
+.server-card-name {
+    font-size: 1.1rem;
+    font-weight: 600;
+    margin: 0;
+    line-height: 1.3;
+}
+.server-card-action {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.75rem 1.25rem;
+    background-color: rgba(138, 146, 177, 0.05);
+    border-top: 1px solid var(--border-color);
+    font-weight: 600;
+    font-size: 0.9rem;
+    color: var(--text-secondary);
+    transition: all var(--transition-fast);
+}
+.server-card:hover .server-card-action {
+    background: linear-gradient(90deg, var(--cta-color-start), var(--cta-color-end));
+    color: white;
+}
+.server-card.is-available:hover .server-card-action {
+    background: #2ecc71;
+    color: white;
+}
+
+/* News Cards */
+.news-card {
+    background-color: var(--bg-content);
+    border: 1px solid var(--border-color);
+    border-radius: 12px;
+    display: flex;
+    flex-direction: column;
+    transition: all var(--transition-smooth);
+    overflow: hidden;
+}
+.news-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 10px 30px rgba(0,0,0,0.1), 0 0 25px var(--accent-glow);
+    border-color: var(--cta-color-start);
+}
+
+/* Team Cards */
+.team-card {
+    background-color: var(--bg-content);
+    border: 1px solid var(--border-color);
+    border-radius: 16px;
+    text-align: center;
+    overflow: hidden;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    transition: transform var(--transition-smooth), box-shadow var(--transition-smooth), border-color var(--transition-smooth);
+}
+.team-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 10px 30px rgba(0,0,0,0.1), 0 0 25px var(--accent-glow);
+    border-color: var(--cta-color-start);
+}
+
+/* Profile Card */
+.profile-card {
+    width: 100%;
+    max-width: 500px;
+    background-color: var(--bg-content);
+    border: 1px solid var(--border-color);
+    border-radius: 16px;
+    box-shadow: 0 10px 40px rgba(0,0,0,0.1);
+    overflow: hidden;
+}

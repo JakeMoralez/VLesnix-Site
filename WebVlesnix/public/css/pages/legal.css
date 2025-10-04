@@ -1,0 +1,18 @@
+
+.legal-page-container {
+    padding-top: 100px;
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.legal-page-container h2, .legal-page-container h3 {
+    font-family: var(--font-accent);
+}
+
+.legal-page-container h3 {
+    margin-top: 2rem;
+}
+
+.legal-page-container ul {
+    padding-left: 20px;
+}

@@ -1,0 +1,160 @@
+/* For pages like Terms, Privacy */
+.content-page-container {
+    max-width: 800px;
+    margin: 0 auto;
+    position: relative;
+}
+.content-page-container h2, .content-page-container h3 {
+    font-family: var(--font-accent);
+}
+.content-page-container h3 {
+    margin-top: 2rem;
+}
+.content-page-container ul {
+    padding-left: 20px;
+}
+.content-page-container li {
+    margin-bottom: 0.5rem;
+}
+
+
+/* For Profile Page */
+.profile-page .content-page-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    max-width: 100%; /* Override max-width for centering */
+}
+
+.profile-card {
+    width: 100%;
+    max-width: 500px;
+    background-color: var(--bg-content);
+    border: 1px solid var(--border-color);
+    border-radius: 16px;
+    box-shadow: 0 10px 40px rgba(0,0,0,0.1);
+    overflow: hidden;
+}
+.profile-card-banner {
+    height: 120px;
+    background: linear-gradient(90deg, var(--cta-color-start), var(--cta-color-end));
+}
+.profile-card-header {
+    position: relative;
+    text-align: center;
+    padding: 0 2rem 1.5rem;
+    margin-top: -64px;
+}
+.profile-card-avatar {
+    width: 128px;
+    height: 128px;
+    border-radius: 50%;
+    border: 6px solid var(--bg-content);
+    margin-bottom: 1rem;
+}
+.profile-card-header h1 {
+    font-family: var(--font-accent);
+    font-size: 2rem;
+    margin: 0;
+}
+.profile-card-userid {
+    font-size: 0.9rem;
+    color: var(--text-secondary);
+    margin-top: 0.25rem;
+}
+.profile-card-body {
+    padding: 1rem 2rem 2rem;
+    text-align: center;
+}
+.profile-card-body p {
+    margin-bottom: 1.5rem;
+}
+.profile-card-actions {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+}
+
+
+/* --- Admin Page Editor --- */
+#admin-edit-container {
+    position: absolute;
+    top: 0;
+    right: 0;
+}
+
+.content-editor-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.7);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    z-index: 3000;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity var(--transition-smooth), visibility var(--transition-smooth);
+}
+.content-editor-overlay.active {
+    opacity: 1;
+    visibility: visible;
+}
+.content-editor {
+    width: 90%;
+    height: 90%;
+    max-width: 1200px;
+    background-color: var(--bg);
+    border-radius: 16px;
+    border: 1px solid var(--border-color);
+    box-shadow: 0 15px 40px rgba(0,0,0,0.3);
+    display: flex;
+    flex-direction: column;
+    transform: scale(0.95);
+    transition: transform var(--transition-smooth);
+}
+.content-editor-overlay.active .content-editor {
+    transform: scale(1);
+}
+.content-editor-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem 1.5rem;
+    border-bottom: 1px solid var(--border-color);
+    flex-shrink: 0;
+}
+.content-editor-header h3 {
+    margin: 0;
+    font-family: var(--font-accent);
+}
+.content-editor-body {
+    flex-grow: 1;
+    padding: 1rem;
+    overflow: hidden; /* EasyMDE will handle its own scroll */
+    display: flex;
+    flex-direction: column;
+}
+.content-editor-body .EasyMDEContainer,
+.content-editor-body .CodeMirror {
+    flex-grow: 1;
+    height: 100% !important;
+}
+.content-editor-footer {
+    padding: 1rem 1.5rem;
+    border-top: 1px solid var(--border-color);
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    gap: 1rem;
+    flex-shrink: 0;
+}
+.editor-error-message {
+    color: var(--danger-color);
+    font-size: 0.9rem;
+    margin-right: auto;
+}

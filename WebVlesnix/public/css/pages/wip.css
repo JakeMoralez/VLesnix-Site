@@ -1,0 +1,51 @@
+
+.wip-page-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    min-height: calc(100vh - 200px);
+    position: relative;
+    padding: 2rem;
+    overflow: hidden;
+}
+
+.wip-bg-text {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-family: var(--font-accent);
+    font-size: clamp(15rem, 40vw, 25rem);
+    font-weight: 700;
+    color: var(--border-color);
+    opacity: 0.4;
+    z-index: -1;
+    pointer-events: none;
+    user-select: none;
+    line-height: 1;
+}
+
+.wip-title {
+    font-family: var(--font-accent);
+    font-size: clamp(2.5rem, 6vw, 4rem);
+    margin-bottom: 1rem;
+    color: var(--text-primary);
+    position: relative;
+}
+
+.wip-text {
+    font-size: 1.1rem;
+    color: var(--text-secondary);
+    max-width: 550px;
+    margin-bottom: 2.5rem;
+    line-height: 1.7;
+}
+
+.wip-actions {
+    display: flex;
+    gap: 1rem;
+    justify-content: center;
+    flex-wrap: wrap;
+}

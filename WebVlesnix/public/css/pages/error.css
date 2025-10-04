@@ -1,0 +1,93 @@
+.error-page-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    min-height: calc(100vh - 200px);
+    position: relative;
+    padding: 2rem;
+    overflow: hidden;
+}
+
+.error-bg-text {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-family: var(--font-accent);
+    font-size: clamp(15rem, 40vw, 25rem);
+    font-weight: 700;
+    color: var(--border-color);
+    opacity: 0.4;
+    z-index: -1;
+    pointer-events: none;
+    user-select: none;
+    line-height: 1;
+}
+
+.error-title {
+    font-family: var(--font-accent);
+    font-size: clamp(2.5rem, 6vw, 4rem);
+    margin-bottom: 1rem;
+    color: var(--text-primary);
+    position: relative;
+    animation: text-flicker 4s infinite linear;
+}
+
+/* Glitch effect for the title */
+.error-title[data-text]::before,
+.error-title[data-text]::after {
+    content: attr(data-text);
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: var(--bg);
+    overflow: hidden;
+    clip-path: inset(50% 0 50% 0);
+}
+
+.error-title[data-text]::before {
+    left: -2px;
+    text-shadow: 1px 0 var(--cta-color-end);
+    animation: glitch-top 2s infinite linear alternate-reverse;
+}
+
+.error-title[data-text]::after {
+    left: 2px;
+    text-shadow: -1px 0 var(--cta-color-start);
+    animation: glitch-bottom 2.5s infinite linear alternate-reverse;
+}
+
+@keyframes glitch-top {
+    0% { clip-path: inset(20% 0 79% 0); } 20% { clip-path: inset(80% 0 1% 0); } 40% { clip-path: inset(40% 0 55% 0); } 60% { clip-path: inset(10% 0 85% 0); } 80% { clip-path: inset(90% 0 5% 0); } 100% { clip-path: inset(50% 0 45% 0); }
+}
+@keyframes glitch-bottom {
+    0% { clip-path: inset(70% 0 15% 0); } 20% { clip-path: inset(1% 0 90% 0); } 40% { clip-path: inset(60% 0 30% 0); } 60% { clip-path: inset(80% 0 5% 0); } 80% { clip-path: inset(5% 0 90% 0); } 100% { clip-path: inset(40% 0 58% 0); }
+}
+@keyframes text-flicker {
+    0%, 100% { opacity: 1; }
+    50.2% { opacity: 1; }
+    50.3% { opacity: 0.7; }
+    50.4% { opacity: 1; }
+    75.2% { opacity: 1; }
+    75.3% { opacity: 0.6; }
+    75.4% { opacity: 1; }
+}
+
+.error-text {
+    font-size: 1.1rem;
+    color: var(--text-secondary);
+    max-width: 550px;
+    margin-bottom: 2.5rem;
+    line-height: 1.7;
+}
+
+.error-actions {
+    display: flex;
+    gap: 1rem;
+    justify-content: center;
+    flex-wrap: wrap;
+}
