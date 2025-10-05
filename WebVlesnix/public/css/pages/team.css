@@ -1,31 +1,37 @@
 
 
-.team-page-container {
-    /* padding-top: 80px; removed */
-}
-
 .team-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(450px, 1fr));
     gap: 2rem;
     margin-top: 2rem;
 }
 
+/* Centering for a single card */
+.team-grid.single-item {
+    grid-template-columns: minmax(450px, 600px);
+    justify-content: center;
+}
+
+/* New Horizontal Card Design */
 .team-card {
     background-color: var(--bg-content);
     border: 1px solid var(--border-color);
-    border-radius: 20px;
-    text-align: center;
-    overflow: hidden;
+    border-radius: 16px;
+    transition: all var(--transition-smooth);
     position: relative;
+    overflow: hidden;
     display: flex;
-    flex-direction: column;
-    padding-top: 2rem;
-    transition: transform var(--transition-smooth), box-shadow var(--transition-smooth), border-color var(--transition-smooth);
+    flex-direction: row;
+    align-items: center;
+    text-align: left;
+    padding: 2rem;
+    gap: 2rem;
 }
+
 .team-card:hover {
-    transform: translateY(-10px);
-    box-shadow: 0 15px 35px rgba(0,0,0,0.1), 0 0 30px var(--accent-glow);
+    transform: translateY(-8px);
+    box-shadow: 0 10px 30px rgba(0,0,0,0.1), 0 0 35px var(--accent-glow);
     border-color: var(--cta-color-start);
 }
 
@@ -33,63 +39,46 @@
     width: 120px;
     height: 120px;
     border-radius: 50%;
-    border: 4px solid var(--bg); /* Use page background for a cutout effect */
-    margin: 0 auto;
-    position: relative;
-    z-index: 1;
-    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+    object-fit: cover;
+    flex-shrink: 0;
+    border: 3px solid var(--cta-color-start);
+    box-shadow: 0 0 20px -5px var(--accent-glow);
+    background-color: var(--bg);
 }
 
-.team-card-body {
-    padding: 1rem 1.5rem 1.5rem;
-    flex-grow: 1;
+.team-card-content {
     display: flex;
     flex-direction: column;
-    align-items: center;
+    flex-grow: 1;
 }
 
 .team-card-name {
     font-family: var(--font-accent);
     font-size: 1.5rem;
-    margin: 1rem 0 0.25rem 0;
+    margin: 0 0 0.25rem 0;
+    line-height: 1.2;
 }
 
 .team-card-role {
-    font-size: 0.8rem;
-    font-weight: 700;
-    padding: 0.25rem 0.85rem;
-    border-radius: 50px;
-    text-transform: uppercase;
-    display: inline-block;
-    margin-bottom: 1rem;
-}
-
-.team-card-role.founder {
-    color: #fff;
-    background: linear-gradient(45deg, var(--cta-color-start), var(--cta-color-end));
-}
-
-.team-card-role.moderator {
-    color: var(--text-secondary);
-    background-color: var(--bg);
-    border: 1px solid var(--border-color);
+    font-size: 0.9rem;
+    font-weight: 500;
+    margin: 0 0 1rem 0;
+    color: var(--cta-color-start);
 }
 
 .team-card-description {
     font-size: 0.95rem;
     color: var(--text-secondary);
-    flex-grow: 1;
-    margin-bottom: 1.5rem; /* Ensure space before socials */
+    margin: 0 0 1.5rem 0;
+    line-height: 1.6;
+    flex-grow: 1; /* Pushes socials to the bottom */
 }
 
 .team-card-socials {
-    padding: 1rem;
-    border-top: 1px solid var(--border-color);
-    background-color: transparent;
     display: flex;
-    justify-content: center;
-    gap: 1.5rem;
-    margin-top: auto; /* Pushes socials to the bottom */
+    justify-content: flex-start;
+    gap: 1.25rem;
+    margin-top: auto;
 }
 
 .team-card-socials a {
@@ -98,15 +87,268 @@
 }
 
 .team-card-socials a:hover {
+    color: var(--cta-color-start);
+    transform: translateY(-2px);
+}
+
+.team-card-socials svg {
+    width: 22px;
+    height: 22px;
+}
+
+
+/* === ADMIN STYLES === */
+
+.team-card .admin-actions {
+    position: absolute;
+    top: 0.75rem;
+    right: 0.75rem;
+    display: flex;
+    gap: 0.5rem;
+    opacity: 0;
+    visibility: hidden;
+    transform: scale(0.9);
+    transition: all var(--transition-fast);
+    z-index: 2;
+}
+.team-card:hover .admin-actions {
+    opacity: 1;
+    visibility: visible;
+    transform: scale(1);
+}
+.team-card .admin-action-btn {
+    background: var(--panel-bg);
+    border: 1px solid var(--border-color);
+    padding: 0.5rem;
+    line-height: 0;
+    cursor: pointer;
+    border-radius: 8px;
+    color: var(--text-secondary);
+    transition: background-color var(--transition-fast), color var(--transition-fast);
+}
+.team-card .admin-action-btn:hover { background-color: var(--border-color); color: var(--text-primary); }
+.team-card .admin-action-btn.delete-btn:hover { background-color: var(--danger-bg-hover); color: var(--danger-hover-color); }
+.team-card .admin-action-btn svg { width: 18px; height: 18px; pointer-events: none; }
+
+/* Drag and drop styles */
+.team-grid.sortable-active .team-card { cursor: grab; }
+.team-card.sortable-ghost {
+    opacity: 0.4;
+    border-style: dashed;
+    background: var(--bg);
+}
+.team-card.sortable-chosen {
+    cursor: grabbing;
+    transform: translateY(-5px) scale(1.02);
+    box-shadow: 0 15px 40px rgba(0,0,0,0.2), 0 0 40px var(--accent-glow);
+}
+
+/* NEW Save Order Toast */
+.save-order-toast {
+    position: fixed;
+    bottom: 2rem;
+    left: 50%;
+    transform: translateX(-50%) translateY(150%);
+    opacity: 0;
+    visibility: hidden;
+
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+    padding: 0.75rem 1rem 0.75rem 1.5rem;
+
+    background-color: var(--header-bg);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border: 1px solid var(--border-color);
+    border-radius: 12px;
+
+    box-shadow: 0 5px 25px rgba(0,0,0,0.2);
+    z-index: 1050;
+    transition: transform var(--transition-smooth), opacity var(--transition-smooth), visibility var(--transition-smooth);
+}
+
+.save-order-toast.active {
+    transform: translateX(-50%) translateY(0);
+    opacity: 1;
+    visibility: visible;
+}
+
+.save-order-toast span {
     color: var(--text-primary);
-    transform: scale(1.2);
+    font-weight: 500;
+    font-size: 1rem;
+}
+
+.toast-actions {
+    display: flex;
+    gap: 0.75rem;
+}
+
+.save-order-toast .toast-btn-save.success {
+    background: #2ecc71;
+    border-color: #2ecc71;
+    color: #fff;
+    cursor: default;
+}
+
+
+/* === MODAL STYLES (REDESIGNED) === */
+
+#team-editor-form .form-grid {
+    display: grid;
+    grid-template-columns: 200px 1fr;
+    gap: 2rem;
+}
+
+#team-editor-form .form-col-left {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+}
+
+#team-editor-form .form-col-right {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+}
+
+#team-editor-form .form-group {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+#team-editor-form .form-group label {
+    font-weight: 600;
+    font-size: 0.9rem;
+}
+#team-editor-form .form-group input,
+#team-editor-form .form-group select,
+#team-editor-form .form-group textarea {
+    width: 100%;
+    padding: 0.7rem 1rem;
+    border-radius: 8px; /* Consistent radius */
+    border: 1px solid var(--border-color);
+    background-color: var(--bg);
+    color: var(--text-primary);
+    font-size: 1rem;
+    transition: all var(--transition-fast);
+}
+#team-editor-form .form-group input:focus,
+#team-editor-form .form-group select:focus,
+#team-editor-form .form-group textarea:focus {
+    outline: none !important;
+    border-color: var(--cta-color-start);
+    box-shadow: 0 0 0 3px var(--accent-glow);
+}
+#team-editor-form .form-group textarea {
+    min-height: 120px;
+    resize: vertical;
+    flex-grow: 1;
+}
+#team-editor-form .form-col-right {
+    flex-grow: 1;
+}
+
+/* New Avatar Uploader */
+.avatar-uploader-new {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.75rem;
+    text-align: center;
+}
+.avatar-preview-wrapper {
+    position: relative;
+    width: 150px;
+    height: 150px;
+    cursor: pointer;
+}
+#avatar-preview {
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 3px solid var(--border-color);
+    transition: all var(--transition-fast);
+}
+.avatar-preview-wrapper:hover #avatar-preview {
+    border-color: var(--cta-color-start);
+    filter: brightness(0.7);
+}
+.avatar-upload-overlay {
+    position: absolute;
+    top: 0; left: 0; width: 100%; height: 100%;
+    border-radius: 50%;
+    background: rgba(0,0,0,0.5);
+    color: white;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    opacity: 0;
+    transition: opacity var(--transition-fast);
+    pointer-events: none;
+}
+.avatar-preview-wrapper:hover .avatar-upload-overlay {
+    opacity: 1;
+}
+.avatar-upload-overlay svg {
+    width: 32px; height: 32px; margin-bottom: 0.5rem;
+}
+.avatar-uploader-new .helper-text {
+    font-size: 0.8rem;
+    color: var(--text-secondary);
+    max-width: 150px;
+}
+#team-avatar-file-input { display: none; }
+
+
+#team-editor-form .social-links-editor .social-link-row {
+    display: flex;
+    gap: 0.5rem;
+    align-items: center;
+    margin-bottom: 0.5rem;
+}
+#team-editor-form .social-links-editor .social-link-row input {
+    flex-grow: 1;
+}
+#team-editor-form .social-links-editor .remove-social-btn {
+    padding: 0.6rem;
+    line-height: 0;
+    flex-shrink: 0;
+}
+#team-editor-form #add-social-btn {
+    margin-top: 0.5rem;
+    font-size: 0.9rem;
+    padding: 0.5rem 1rem;
+}
+#team-editor-form .form-error-message {
+    text-align: left;
+    flex-grow: 1;
+    margin: 0;
 }
 
 @media (max-width: 768px) {
-    .team-page-container {
-        /* padding-top: 60px; removed */
+    .team-grid { grid-template-columns: 1fr; }
+    .team-card {
+        flex-direction: column;
+        text-align: center;
+        padding: 1.5rem;
     }
-    .team-grid {
+    .team-card-content {
+        align-items: center;
+        text-align: center;
+    }
+    .team-card-socials {
+        justify-content: center;
+    }
+    #team-editor-form .form-grid {
         grid-template-columns: 1fr;
     }
+}
+
+/* Force scrollability for the modal on this page if content overflows */
+#team-editor-modal-container .modal-body {
+    overflow-y: auto;
 }

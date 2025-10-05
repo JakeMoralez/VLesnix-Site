@@ -9,18 +9,19 @@
     --transition-fast: 0.2s ease;
     --transition-smooth: 0.3s ease-in-out;
 
-    /* Base Colors - Dark */
-    --bg-dark: #0d0f18;
-    --bg-content-dark: #121420;
-    --text-primary-dark: #e0e0f8;
-    --text-secondary-dark: #8a92b1;
-    --border-dark: rgba(138, 146, 177, 0.15);
-    --cta-start-dark: #8e2de2;
-    --cta-end-dark: #4a00e0;
-    --header-bg-dark: rgba(13, 15, 24, 0.85);
-    --accent-glow-dark: rgba(142, 68, 173, 0.3);
+    /* Base Colors - Dark (Vlesnix Guard Theme) */
+    --bg-dark: #0D0B14;
+    --bg-content-dark: rgba(22, 19, 34, 0.5); /* Semi-transparent panel */
+    --text-primary-dark: #F5F5F5;
+    --text-secondary-dark: #A099AC;
+    --border-dark: rgba(123, 47, 247, 0.3); /* Purple border */
+    --cta-start-dark: #7B2FF7;
+    --cta-end-dark: #9D4EDD;
+    --header-bg-dark: rgba(13, 11, 20, 0.85); /* Darker, more solid header */
+    --accent-glow-dark: rgba(123, 47, 247, 0.4);
     --danger-dark: #e74c3c;
     --danger-hover-dark: #c0392b;
+    --danger-border-dark: #E54B4B;
 
     /* Base Colors - Light */
     --bg-light: #f4f7fc;
@@ -28,12 +29,13 @@
     --text-primary-light: #2c3e50;
     --text-secondary-light: #57647e;
     --border-light: #e8eaf3;
-    --cta-start-light: #6a11cb;
-    --cta-end-light: #2575fc;
+    --cta-start-light: #8E2DE2;
+    --cta-end-light: #4A00E0;
     --header-bg-light: rgba(255, 255, 255, 0.85);
-    --accent-glow-light: rgba(37, 117, 252, 0.2);
+    --accent-glow-light: rgba(142, 45, 226, 0.25);
     --danger-light: #e74c3c;
-    --danger-hover-light: #c0392b;
+    --danger-hover-dark: #c0392b;
+    --danger-border-light: #ff4d4d;
 }
 
 .dark-theme {
@@ -48,8 +50,9 @@
     --accent-glow: var(--accent-glow-dark);
     --logo-filter: none;
     --danger-color: var(--danger-dark);
-    --danger-hover-color: var(--danger-hover-dark);
-    --danger-bg-hover: rgba(231, 76, 60, 0.1);
+    --danger-hover-color: #fff;
+    --danger-border-color: var(--danger-border-dark);
+    --danger-bg-hover: rgba(229, 75, 75, 0.1);
     --panel-bg: rgba(255, 255, 255, 0.05);
     --panel-border: rgba(255, 255, 255, 0.1);
 }
@@ -60,15 +63,16 @@
     --text-primary: var(--text-primary-light);
     --text-secondary: var(--text-secondary-light);
     --border-color: var(--border-light);
-    --cta-color-start: var(--cta-color-start-light);
-    --cta-color-end: var(--cta-color-end-light);
+    --cta-color-start: var(--cta-start-light);
+    --cta-color-end: var(--cta-end-light);
     --header-bg: var(--header-bg-light);
     --accent-glow: var(--accent-glow-light);
     --logo-filter: none;
     --danger-color: var(--danger-light);
-    --danger-hover-color: var(--danger-hover-light);
+    --danger-hover-color: #fff;
+    --danger-border-color: var(--danger-border-light);
     --danger-bg-hover: rgba(231, 76, 60, 0.05);
-    --panel-bg: rgba(255, 255, 255, 0.8);
+    --panel-bg: rgba(0, 0, 0, 0.05);
     --panel-border: #e8eaf3;
 }
 
@@ -83,7 +87,58 @@ html, body {
     background-color: var(--bg);
     color: var(--text-primary);
     line-height: 1.6;
+    overflow-x: hidden;
 }
+
+
+/* Background for particles.js */
+#particles-bg {
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    z-index: -1;
+    background-color: var(--bg);
+    overflow: hidden; /* Contain glowing pseudo-elements */
+}
+
+#particles-bg::before,
+#particles-bg::after {
+    content: '';
+    position: absolute;
+    width: 600px;
+    height: 600px;
+    background-image: radial-gradient(circle, rgba(123, 47, 247, 0.15), transparent 70%);
+    border-radius: 50%;
+    filter: blur(50px);
+    will-change: transform;
+    z-index: -2;
+}
+
+#particles-bg::before {
+    top: -20%;
+    left: -20%;
+    animation: glow-move-1 25s cubic-bezier(0.45, 0, 0.55, 1) infinite alternate;
+}
+
+#particles-bg::after {
+    bottom: -20%;
+    right: -20%;
+    background-image: radial-gradient(circle, rgba(157, 78, 221, 0.15), transparent 70%);
+    animation: glow-move-2 30s cubic-bezier(0.45, 0, 0.55, 1) infinite alternate;
+}
+
+@keyframes glow-move-1 {
+    0% { transform: translate(0, 0) scale(1); }
+    100% { transform: translate(40vw, 30vh) scale(1.2); }
+}
+
+@keyframes glow-move-2 {
+    0% { transform: translate(0, 0) scale(1.2); }
+    100% { transform: translate(-30vw, -40vh) scale(1); }
+}
+
 
 ::view-transition-old(root),
 ::view-transition-new(root) {
@@ -121,15 +176,6 @@ p {
     color: var(--text-secondary);
 }
 
-#particles-bg {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100vw;
-    height: 100vh;
-    z-index: -1;
-}
-
 .content-wrapper {
     position: relative;
     z-index: 1;
@@ -152,11 +198,7 @@ main {
     font-size: 2.5rem;
     text-align: center;
     margin-bottom: 0.5rem;
-    background: linear-gradient(90deg, var(--cta-color-start), var(--cta-color-end));
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
-    text-fill-color: transparent;
+    color: var(--text-primary);
 }
 
 .section-subtitle {

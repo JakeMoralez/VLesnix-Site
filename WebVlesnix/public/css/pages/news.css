@@ -1,65 +1,62 @@
 
 
 .news-page-container {
-    max-width: 1100px;
+    max-width: 1200px;
     margin: 0 auto;
 }
 
+/* Filter Bar */
 .news-filter-bar {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    gap: 1.5rem;
-    margin-bottom: 2.5rem;
     flex-wrap: wrap;
+    gap: 1rem;
+    margin-bottom: 3rem;
+    padding: 1rem;
+    background-color: var(--bg-content);
+    border: 1px solid var(--border-color);
+    border-radius: 12px;
 }
-
 .filter-tags-container {
     display: flex;
-    gap: 0.5rem;
     flex-wrap: wrap;
+    gap: 0.5rem;
 }
-
 .filter-tag-button {
     padding: 0.5rem 1rem;
     border: 1px solid var(--border-color);
-    background-color: var(--bg-content);
+    background-color: transparent;
     color: var(--text-secondary);
     font-weight: 600;
     border-radius: 50px;
     cursor: pointer;
     transition: all var(--transition-fast);
 }
-
 .filter-tag-button.active {
-    background: linear-gradient(90deg, var(--cta-color-start), var(--cta-color-end));
-    border-color: transparent;
+    background-color: var(--cta-color-start);
     color: #fff;
-    box-shadow: 0 3px 10px var(--accent-glow);
-}
-
-.filter-tag-button:not(.active):hover {
-    color: var(--text-primary);
     border-color: var(--cta-color-start);
 }
-
-.filter-tag-button:active {
-    transform: translateY(1px) scale(0.98);
+.filter-tag-button:not(.active):hover {
+    color: var(--text-primary);
+    border-color: var(--text-primary);
 }
-
 
 .filter-admin-tools {
     display: flex;
-    gap: 1rem;
     align-items: center;
-    margin-left: auto;
+    gap: 1rem;
+}
+
+/* Added specific style for add button */
+#add-news-btn {
+    border-radius: 50px;
 }
 
 .filter-search-container {
     position: relative;
-    min-width: 280px;
 }
-
 .filter-search-container .search-icon {
     position: absolute;
     top: 50%;
@@ -68,430 +65,367 @@
     color: var(--text-secondary);
     z-index: 1;
 }
-
 #news-search-input {
-    width: 100%;
+    min-width: 250px;
     padding: 0.7rem 1rem 0.7rem 3rem;
     border-radius: 50px;
-    border: 1px solid var(--border-color);
-    background-color: var(--bg-content);
+    border: none;
+    background-color: var(--bg);
     color: var(--text-primary);
-    font-size: 0.95rem;
-    transition: border-color var(--transition-fast), box-shadow var(--transition-fast);
+    font-size: 0.9rem;
+    transition: box-shadow var(--transition-fast);
 }
-
 #news-search-input:focus {
     outline: none;
-    border-color: var(--cta-color-start);
-    box-shadow: 0 0 0 3px var(--accent-glow);
+    box-shadow: none !important;
 }
 
 
+/* News Grid & Cards */
 .news-grid {
     display: grid;
     grid-template-columns: 1fr;
     gap: 2rem;
+    margin-top: 1.5rem; /* Added space below filter bar */
 }
 
 .news-card-header {
-    padding: 1.25rem 1.5rem;
-    border-bottom: 1px solid var(--border-color);
     display: flex;
     justify-content: space-between;
     align-items: center;
     flex-wrap: wrap;
-    gap: 0.5rem;
+    gap: 1rem;
+    padding: 1rem 1.5rem;
+    border-bottom: 1px solid var(--border-color);
 }
-
 .news-card-date {
     font-size: 0.9rem;
-    font-weight: 600;
+    font-weight: 500;
     color: var(--text-secondary);
 }
-
 .news-card-tags {
     display: flex;
-    gap: 0.5rem;
-    flex-wrap: wrap;
+    gap: 0.75rem;
 }
-
 .tag {
-    font-size: 0.75rem;
-    font-weight: 700;
-    padding: 0.25rem 0.75rem;
+    font-size: 0.8rem;
+    font-weight: 600;
+    padding: 0.3rem 0.85rem;
     border-radius: 50px;
-    text-transform: uppercase;
+    text-transform: capitalize;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+    background-color: var(--panel-bg);
+    border: 1px solid var(--border-color);
+}
+.tag svg {
+    width: 14px;
+    height: 14px;
+    stroke-width: 2.5;
 }
 
-.tag.tag-major {
-    background-color: var(--tag-major-bg);
-    color: var(--tag-major-text);
-}
+.tag-major { color: #f1c40f; }
+.tag-feature { color: #3498db; }
+.tag-security { color: #2ecc71; }
+.tag-fix { color: #e74c3c; }
+.tag-update { color: #9b59b6; }
 
-.tag.tag-feature {
-    background-color: var(--tag-feature-bg);
-    color: var(--tag-feature-text);
-}
-
-.tag.tag-security {
-    background-color: var(--tag-security-bg);
-    color: var(--tag-security-text);
-}
-
-.tag.tag-fix {
-    background-color: var(--tag-fix-bg);
-    color: var(--tag-fix-text);
-}
-
-.tag.tag-update {
-    background-color: var(--tag-update-bg);
-    color: var(--tag-update-text);
-}
 
 .news-card-body {
     padding: 1.5rem;
     position: relative;
 }
-
-.news-card-admin-actions {
-    position: absolute;
-    top: 1.25rem;
-    right: 1.5rem;
-    display: flex;
-    gap: 0.75rem;
-    opacity: 0;
-    visibility: hidden;
-    transform: translateY(-10px);
-    transition: all var(--transition-smooth);
-}
-
-.news-card:hover .news-card-admin-actions {
-    opacity: 1;
-    visibility: visible;
-    transform: translateY(0);
-}
-
-.admin-action-btn {
-    background: var(--bg);
-    border: 1px solid var(--border-color);
-    border-radius: 50%;
-    width: 36px;
-    height: 36px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    color: var(--text-secondary);
-    cursor: pointer;
-    transition: all var(--transition-fast);
-}
-.admin-action-btn svg {
-    width: 18px;
-    height: 18px;
-}
-.admin-action-btn:hover {
-    color: var(--text-primary);
-    border-color: var(--cta-color-start);
-}
-.admin-action-btn.delete-btn:hover {
-    background-color: var(--danger-bg-hover);
-    color: var(--danger-hover-color);
-    border-color: var(--danger-color);
-}
-
 .news-card-body h3 {
     font-family: var(--font-accent);
-    font-size: 1.6rem;
-    margin-top: 0;
+    font-size: 1.5rem;
     margin-bottom: 1rem;
-    padding-right: 6rem; /* Space for admin buttons */
+}
+.news-content-rendered p, .news-content-rendered li {
+    color: var(--text-secondary);
+    line-height: 1.7;
+}
+.news-content-rendered h3 { font-family: var(--font-accent); margin-top: 1.5rem; font-size: 1.4rem; border-bottom: 1px solid var(--border-color); padding-bottom: 0.5rem; }
+.news-content-rendered h4 { font-family: var(--font-accent); margin-top: 1.5rem; font-size: 1.2rem; }
+.news-content-rendered ul, .news-content-rendered ol { padding-left: 20px; margin-bottom: 1rem; }
+.news-content-rendered li { margin-bottom: 0.5rem; }
+.news-content-rendered a { color: var(--cta-color-start); text-decoration: underline; }
+.news-content-rendered blockquote { border-left: 3px solid var(--cta-color-start); padding-left: 1rem; margin: 1rem 0; font-style: italic; color: var(--text-primary); }
+.news-content-rendered table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 1.5rem 0;
+    font-size: 0.95rem;
+}
+.news-content-rendered th, .news-content-rendered td {
+    border: 1px solid var(--border-color);
+    padding: 0.75rem;
+    text-align: left;
+}
+.news-content-rendered th {
+    background-color: var(--bg);
+    font-weight: 600;
+}
+.news-content-rendered tr:nth-child(even) {
+    background-color: rgba(138, 146, 177, 0.05);
 }
 
-.news-card-body h4 {
-    font-size: 1.1rem;
-    margin-top: 1.5rem;
-    margin-bottom: 0.75rem;
+
+/* Admin Controls on Card */
+.news-card-admin-actions {
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+    display: flex;
+    gap: 0.5rem;
+    background: var(--bg-content);
+    padding: 0.25rem;
+    border-radius: 8px;
+    border: 1px solid var(--border-color);
+    opacity: 0;
+    transition: opacity var(--transition-fast);
+}
+.news-card:hover .news-card-admin-actions {
+    opacity: 1;
+}
+.admin-action-btn {
+    background: none; border: none; padding: 0.5rem; line-height: 0; cursor: pointer;
+    border-radius: 6px; color: var(--text-secondary);
+    transition: background-color var(--transition-fast), color var(--transition-fast);
+}
+.admin-action-btn:hover { background-color: var(--border-color); color: var(--text-primary); }
+.admin-action-btn svg { width: 18px; height: 18px; pointer-events: none; }
+
+
+/* ============================================= */
+/* ==      NEW INLINE EDITOR STYLES           == */
+/* ============================================= */
+#editor-container-placeholder {
+    margin-bottom: 2rem;
+}
+.news-editor-instance {
+    overflow: hidden;
+    background-color: var(--bg-content);
+    border: none;
+    border-radius: 12px;
+    margin-top: 1rem; /* Space from card content if editing */
+    padding: 1.5rem;
+}
+.news-editor-form {
 }
 
-.news-card-body p,
-.news-card-body ul,
-.news-card-body ol {
-    margin-bottom: 1em;
+.news-editor-form .form-group {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    margin-bottom: 1.5rem;
 }
-
-.news-card-body > *:last-child {
+.news-editor-form .form-group:last-child {
     margin-bottom: 0;
 }
-
-.news-card-body ul {
-    padding-left: 20px;
-    color: var(--text-secondary);
-}
-
-.news-card-body ul li {
-    margin-bottom: 0.5rem;
-}
-
-.news-card-body code {
-    background-color: var(--bg);
-    padding: 2px 5px;
-    border-radius: 4px;
-    font-family: monospace;
-}
-
-.news-grid .loader-container {
-    display: flex;
-    justify-content: center;
-    padding: 4rem 0;
-}
-
-.empty-state {
-    text-align: center;
-    padding: 4rem 2rem;
-    background-color: var(--bg-content);
-    border: 1px dashed var(--border-color);
-    border-radius: 12px;
-    margin-top: 2rem;
-}
-
-.empty-state-icon {
-    color: var(--text-secondary);
-    margin-bottom: 1rem;
-}
-
-.empty-state-icon svg {
-    width: 48px;
-    height: 48px;
-    opacity: 0.5;
-}
-
-.empty-state h3 {
-    font-family: var(--font-accent);
-    color: var(--text-primary);
-}
-
-.empty-state p {
-    color: var(--text-secondary);
-    max-width: 400px;
-    margin: 0.5rem auto 0 auto;
-}
-
-/* --- Inline Editor Styles --- */
-
-.news-editor-card {
-    padding: 1.5rem;
-    overflow: hidden;
-}
-
-.form-group {
-    margin-bottom: 1.25rem;
-}
-
-.form-group label {
-    display: block;
-    margin-bottom: 0.25rem;
+.news-editor-form .form-group label {
     font-weight: 600;
     font-size: 0.9rem;
 }
-.form-group label[for="news-content"] {
-    margin-bottom: 0.5rem; /* Reduced from 0.75rem for a tighter look */
-}
-
-
-.form-group input[type="text"],
-.form-group input[type="datetime-local"] {
+.news-editor-form .form-group input[type="text"],
+.news-editor-form .form-group input[type="datetime-local"] {
     width: 100%;
-    padding: 0.8rem 1rem;
-    border-radius: 8px;
+    padding: 0.7rem 1rem;
+    border-radius: 12px;
     border: 1px solid var(--border-color);
     background-color: var(--bg);
     color: var(--text-primary);
     font-size: 1rem;
-    transition: border-color var(--transition-fast), box-shadow var(--transition-fast);
+    transition: all var(--transition-fast);
 }
-.dark-theme .form-group input[type="datetime-local"] { color-scheme: dark; }
-
-.form-group input[type="text"]:focus,
-.form-group input[type="datetime-local"]:focus {
+.news-editor-form .form-group input:focus {
     outline: none;
     border-color: var(--cta-color-start);
     box-shadow: 0 0 0 3px var(--accent-glow);
 }
-.form-row {
-    display: flex;
+.news-editor-form .form-row {
+    display: grid;
+    grid-template-columns: 1fr;
     gap: 1.5rem;
-    align-items: flex-start;
 }
-.form-row .form-group {
-    flex: 1;
+@media (min-width: 768px) {
+    .news-editor-form .form-row {
+        grid-template-columns: 1fr 1fr;
+    }
 }
-
-.tag-selection {
+.news-editor-form .tag-selection {
+    display: flex; flex-wrap: wrap; gap: 0.75rem;
+}
+.news-editor-form .tag-checkbox {
     display: flex;
-    flex-wrap: wrap;
-    gap: 0.5rem;
-}
-
-.tag-checkbox {
+    align-items: center;
     cursor: pointer;
+    padding: 0;
+    background: none;
+    border: none;
 }
-
-.tag-checkbox input {
-    display: none;
-}
-
-.tag-checkbox .tag {
+.news-editor-form .tag-checkbox input { display: none; }
+.news-editor-form .tag-checkbox .tag {
     transition: all var(--transition-fast);
     opacity: 0.6;
+    pointer-events: none; /* Pass clicks to label */
 }
-
-.tag-checkbox:hover .tag {
-    opacity: 0.8;
-}
-
-.tag-checkbox input:checked + .tag {
+.news-editor-form .tag-checkbox input:checked + .tag {
     opacity: 1;
-    transform: scale(1.08);
-    box-shadow: 0 0 0 2px var(--cta-color-start);
-}
-
-.tag-checkbox:active .tag {
-    transform: scale(0.98);
+    transform: scale(1.05);
+    box-shadow: 0 0 10px -2px var(--accent-glow);
 }
 
 .editor-footer {
     display: flex;
-    justify-content: flex-end;
+    justify-content: space-between;
     align-items: center;
-    gap: 1rem;
     margin-top: 1.5rem;
 }
-
-.form-error-message {
+.editor-footer .form-error-message {
     color: var(--danger-color);
     font-size: 0.9rem;
-    min-height: 1.2em;
-    margin-right: auto;
     text-align: left;
 }
-
-/* ============================================= */
-/* ==     EasyMDE Editor Styles Overrides     == */
-/* ============================================= */
-
-/* --- Container and Structure --- */
-.EasyMDEContainer {
-    border-radius: 8px;
-    border: 1px solid var(--border-color);
-    transition: border-color var(--transition-fast), box-shadow var(--transition-fast);
+.editor-actions {
+    display: flex;
+    gap: 0.75rem;
 }
-.EasyMDEContainer.active {
-    border-color: var(--cta-color-start);
-    box-shadow: 0 0 0 3px var(--accent-glow);
+
+
+/* EasyMDE Overrides for News Page */
+.news-editor-instance .EasyMDEContainer {
+    border-color: transparent;
+    border-radius: 12px;
 }
-.EasyMDEContainer .editor-toolbar {
-    border-top-left-radius: 7px;
-    border-top-right-radius: 7px;
+.news-editor-instance .editor-toolbar {
+    background-color: var(--bg-content);
     border-bottom: 1px solid var(--border-color);
-    padding: 4px;
-    background-color: var(--bg);
+    border-top-left-radius: 11px;
+    border-top-right-radius: 11px;
 }
-.EasyMDEContainer .editor-toolbar button,
-.EasyMDEContainer .editor-toolbar a {
-    border: none !important;
-    border-radius: 4px;
-    transition: background-color var(--transition-fast), color var(--transition-fast), transform var(--transition-fast);
+.news-editor-instance .editor-toolbar button {
     color: var(--text-secondary) !important;
-}
-.EasyMDEContainer .editor-toolbar button:hover,
-.EasyMDEContainer .editor-toolbar a:hover {
-    background: var(--border-color) !important;
-    color: var(--text-primary) !important;
-    transform: translateY(-1px);
-}
-.EasyMDEContainer .editor-toolbar button:active,
-.EasyMDEContainer .editor-toolbar a:active {
-    transform: scale(0.92);
-    transition-duration: 0.1s;
-}
-.EasyMDEContainer .editor-toolbar button.active,
-.EasyMDEContainer .editor-toolbar a.active {
-    background: var(--border-color) !important;
-    color: var(--text-primary) !important;
-}
-.EasyMDEContainer .editor-toolbar .separator {
-    border-left: 1px solid var(--border-color);
-    border-right: none !important;
-    margin: 4px 8px !important;
-}
-.EasyMDEContainer .CodeMirror {
     border: none !important;
-    border-bottom-left-radius: 7px;
-    border-bottom-right-radius: 7px;
-    padding: 1rem;
-    background-color: var(--bg-content);
-    color: var(--text-primary);
 }
-.EasyMDEContainer .cm-s-easymde {
-    font-family: var(--font-primary), sans-serif !important;
-    font-size: 1rem;
-    line-height: 1.6;
+.news-editor-instance .CodeMirror {
+    background-color: var(--bg-content) !important;
     color: var(--text-primary);
+    border-bottom-left-radius: 11px;
+    border-bottom-right-radius: 11px;
 }
-.EasyMDEContainer .editor-statusbar {
-    border-top: 1px solid var(--border-color);
-    border-bottom-left-radius: 7px;
-    border-bottom-right-radius: 7px;
-    font-size: 0.8rem;
-    padding: 6px 12px !important;
-    min-height: auto;
-    height: auto;
-    background-color: var(--bg);
-    color: var(--text-secondary);
+.news-editor-instance .editor-toolbar button:hover,
+.news-editor-instance .editor-toolbar button.active {
+    background: var(--border-color) !important;
+    color: var(--text-primary) !important;
 }
 
-/* --- Common Editor Internals --- */
-.EasyMDEContainer .CodeMirror-cursor { border-left: 1px solid var(--text-primary) !important; }
-.EasyMDEContainer .editor-preview {
-    padding: 1rem;
-    background-color: var(--bg-content);
-}
-.EasyMDEContainer .editor-preview h1, .EasyMDEContainer .editor-preview h2, .EasyMDEContainer .editor-preview h3 {
+.news-editor-instance .editor-preview,
+.news-editor-instance .editor-preview-side {
+    background: var(--bg) !important;
     color: var(--text-primary);
-    border-bottom: 1px solid var(--border-color);
 }
-.EasyMDEContainer .editor-preview p, .EasyMDEContainer .editor-preview li { color: var(--text-secondary); }
-.EasyMDEContainer .editor-preview a { color: var(--cta-color-start); }
-.EasyMDEContainer .editor-preview code {
-    background-color: var(--bg);
-    padding: 2px 5px;
-    border-radius: 4px;
-    border: 1px solid var(--border-color);
-}
-.EasyMDEContainer .editor-preview pre {
-    background-color: var(--bg);
-    padding: 1rem;
-    border-radius: 8px;
-    border: 1px solid var(--border-color);
-}
-.EasyMDEContainer .editor-preview pre code { background-color: transparent; border: none; padding: 0; }
-.cm-s-easymde .cm-header { color: var(--cta-color-start); }
-.cm-s-easymde .cm-link { color: var(--cta-color-end); }
-.cm-s-easymde .cm-quote { color: #2ecc71; }
-.cm-s-easymde .cm-keyword { color: #e74c3c; }
 
-/* === CUSTOM SCROLLBAR FIX === */
+
+/* --- [RADICAL FIX] Fullscreen & Side-by-Side Overrides --- */
+body.editor-fullscreen-active {
+    overflow: hidden !important;
+}
+body.editor-fullscreen-active header,
+body.editor-fullscreen-active footer {
+    display: none !important;
+}
+
+body.editor-fullscreen-active .EasyMDEContainer.fullscreen {
+    position: fixed !important;
+    top: 0 !important;
+    left: 0 !important;
+    right: 0 !important;
+    bottom: 0 !important;
+    width: 100% !important;
+    height: 100% !important;
+    background-color: var(--bg) !important;
+    border: none !important;
+    border-radius: 0 !important;
+    z-index: 9998;
+}
+
+/* Nuke all borders and outlines within the fullscreen editor */
+body.editor-fullscreen-active .EasyMDEContainer.fullscreen * {
+    border: none !important;
+    outline: none !important;
+    box-shadow: none !important;
+}
+
+/* Re-apply essential borders with !important */
+body.editor-fullscreen-active .EasyMDEContainer.fullscreen .editor-toolbar {
+    border-bottom: 1px solid var(--border-color) !important;
+}
+
+/* Enforce background colors */
+body.editor-fullscreen-active .EasyMDEContainer.fullscreen .editor-toolbar {
+    background-color: var(--bg) !important;
+    border-radius: 0 !important;
+}
+body.editor-fullscreen-active .EasyMDEContainer.fullscreen .CodeMirror {
+    background-color: var(--bg) !important;
+    height: 100% !important;
+}
+body.editor-fullscreen-active .EasyMDEContainer.fullscreen .editor-preview-side {
+    background-color: var(--bg) !important;
+}
+
+/* Fix sizing */
+body.editor-fullscreen-active .EasyMDEContainer.fullscreen.sided .CodeMirror {
+    width: 50% !important;
+}
+body.editor-fullscreen-active .EasyMDEContainer.fullscreen.sided .editor-preview-side {
+    width: 50% !important;
+    border-left: none !important;
+}
+/* --- End Radical Fix --- */
+
+/* Custom scrollbar for preview panes */
+.EasyMDEContainer .editor-preview::-webkit-scrollbar,
+.EasyMDEContainer .editor-preview-side::-webkit-scrollbar {
+    -webkit-appearance: none;
+    width: 14px;
+    background-color: transparent;
+}
+.EasyMDEContainer .editor-preview::-webkit-scrollbar-track,
+.EasyMDEContainer .editor-preview-side::-webkit-scrollbar-track {
+    background-color: var(--bg);
+}
+.EasyMDEContainer .editor-preview::-webkit-scrollbar-thumb,
+.EasyMDEContainer .editor-preview-side::-webkit-scrollbar-thumb {
+    background-color: var(--border-color);
+    border-radius: 10px;
+    border: 4px solid var(--bg);
+    background-clip: content-box;
+    transition: background-color var(--transition-fast);
+}
+.EasyMDEContainer .editor-preview::-webkit-scrollbar-thumb:hover,
+.EasyMDEContainer .editor-preview-side::-webkit-scrollbar-thumb:hover {
+    background-color: var(--cta-color-start);
+}
+
+/* === CUSTOM SCROLLBAR for CodeMirror === */
+.news-editor-instance .EasyMDEContainer .CodeMirror-vscrollbar,
 .EasyMDEContainer .CodeMirror-vscrollbar {
     -webkit-appearance: none;
     width: 14px;
     background-color: transparent;
 }
+.news-editor-instance .EasyMDEContainer .CodeMirror-vscrollbar::-webkit-scrollbar,
 .EasyMDEContainer .CodeMirror-vscrollbar::-webkit-scrollbar {
     -webkit-appearance: none;
     width: 14px;
 }
+.news-editor-instance .EasyMDEContainer .CodeMirror-vscrollbar::-webkit-scrollbar-track,
 .EasyMDEContainer .CodeMirror-vscrollbar::-webkit-scrollbar-track {
     background-color: var(--bg-content);
 }
+.news-editor-instance .EasyMDEContainer .CodeMirror-vscrollbar::-webkit-scrollbar-thumb,
 .EasyMDEContainer .CodeMirror-vscrollbar::-webkit-scrollbar-thumb {
     background-color: var(--border-color);
     border-radius: 10px;
@@ -499,29 +433,7 @@
     background-clip: content-box;
     transition: background-color var(--transition-fast);
 }
+.news-editor-instance .EasyMDEContainer .CodeMirror-vscrollbar::-webkit-scrollbar-thumb:hover,
 .EasyMDEContainer .CodeMirror-vscrollbar::-webkit-scrollbar-thumb:hover {
     background-color: var(--cta-color-start);
-}
-
-/* --- Responsive Adjustments --- */
-@media (max-width: 768px) {
-    .news-filter-bar {
-        flex-direction: column;
-        align-items: stretch;
-    }
-    .filter-admin-tools {
-        width: 100%;
-        margin-top: 1rem;
-        flex-direction: column;
-        align-items: stretch;
-        gap: 1rem;
-    }
-    .filter-search-container {
-        flex-grow: 1;
-        min-width: unset;
-    }
-    .form-row {
-        flex-direction: column;
-        gap: 0;
-    }
 }

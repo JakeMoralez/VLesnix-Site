@@ -1,4 +1,5 @@
 
+
 import { setupParticles } from './theme.js';
 import { setupStickyCursor, destroyStickyCursor } from './cursor.js';
 
@@ -13,8 +14,10 @@ export function setupSiteSettings() {
     // Set initial state from localStorage
     const particlesEnabled = localStorage.getItem('particles_enabled') !== 'false';
     const cursorEnabled = localStorage.getItem('cursor_enabled') !== 'false';
+
     particlesToggle.checked = particlesEnabled;
     cursorToggle.checked = cursorEnabled;
+
 
     // Toggle panel visibility
     settingsBtn.addEventListener('click', (e) => {

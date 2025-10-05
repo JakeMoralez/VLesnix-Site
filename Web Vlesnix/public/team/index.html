@@ -1,0 +1,187 @@
+
+
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title data-translate-key="title_team">Наша Команда — Vlesnix Guard</title>
+    <link rel="icon" href="../assets/images/logo.png" type="image/png">
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <!-- CSS -->
+    <link rel="stylesheet" href="../css/main.css">
+    <link rel="stylesheet" href="../css/components/header.css">
+    <link rel="stylesheet" href="../css/components/footer.css">
+    <link rel="stylesheet" href="../css/components/cards.css">
+    <link rel="stylesheet" href="../css/components/cursor.css">
+    <link rel="stylesheet" href="../css/components/settings.css">
+    <link rel="stylesheet" href="../css/components/dropdown.css">
+    <link rel="stylesheet" href="../css/pages/team.css">
+</head>
+<body class="team-page">
+    <script>
+      (function() {
+        try {
+          var theme = localStorage.getItem('theme');
+          var isDark = theme === 'dark' || (!theme && window.matchMedia('(prefers-color-scheme: dark)').matches);
+          document.body.classList.add(isDark ? 'dark-theme' : 'light-theme');
+        } catch (e) {}
+      })();
+    </script>
+    <div class="sticky-cursor"></div>
+    <div id="particles-bg"></div>
+    <header>
+        <nav>
+            <div class="nav-left"><a href="/" class="logo"><img src="../assets/images/logo.png" alt="Vlesnix Guard Logo"></a></div>
+            <div class="nav-center">
+                <a href="/#about" data-translate-key="nav_about">О боте</a>
+                <a href="/news" data-translate-key="nav_news">Новости</a>
+                <a href="/team" data-translate-key="nav_team">Команда</a>
+                <a href="https://discord.gg/pzD2w4x5Hk" target="_blank" data-translate-key="nav_support">Сервер поддержки</a>
+            </div>
+            <div class="nav-right">
+                <div class="header-actions">
+                    <div id="auth-container">
+                    <!-- JS вставит сюда кнопку "Войти" или аватар -->
+                    </div>
+                </div>
+            </div>
+        </nav>
+    </header>
+    <div class="content-wrapper">
+        <main>
+            <div class="team-page-container">
+                <h1 class="section-title" data-translate-key="team_title">Наша Команда</h1>
+                <p class="section-subtitle reveal" data-translate-key="team_subtitle">Мы — команда энтузиастов, увлеченных созданием лучших инструментов для Discord сообществ.</p>
+
+                <div class="team-grid">
+                    <!-- Nesparks -->
+                    <div class="team-card reveal">
+                        <img src="../assets/images/team_nesparks.jpg" alt="Аватар Nesparks" class="team-card-avatar">
+                        <div class="team-card-body">
+                            <h3 class="team-card-name">Nesparks</h3>
+                            <span class="team-card-role founder" data-translate-key="team_role_founder">Основатель и Разработчик</span>
+                            <p class="team-card-description" data-translate-key="team_desc_nesparks">Создатель Vlesnix Guard, отвечает за архитектуру и основной функционал бота и веб-сайта.</p>
+                        </div>
+                        <div class="team-card-socials">
+                            <a href="https://github.com/Nesparks" target="_blank" aria-label="GitHub">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path></svg>
+                            </a>
+                            <a href="https://t.me/nesparks" target="_blank" aria-label="Telegram">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m22 2-7 20-4-9-9-4 20-7z"></path><path d="M22 2 11 13"></path></svg>
+                            </a>
+                        </div>
+                    </div>
+
+                    <!-- Agat -->
+                    <div class="team-card reveal">
+                        <img src="../assets/images/team_agat.jpg" alt="Аватар Agat" class="team-card-avatar">
+                        <div class="team-card-body">
+                            <h3 class="team-card-name">Agat</h3>
+                            <span class="team-card-role moderator" data-translate-key="team_role_moderator">Модератор</span>
+                            <p class="team-card-description" data-translate-key="team_desc_agat">Обрабатывает обращения пользователей и помогает решать технические вопросы.</p>
+                        </div>
+                        <div class="team-card-socials">
+                            <a href="https://t.me/dinoagat" target="_blank" aria-label="Telegram">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m22 2-7 20-4-9-9-4 20-7z"></path><path d="M22 2 11 13"></path></svg>
+                            </a>
+                        </div>
+                    </div>
+
+                    <!-- Agramahick -->
+                    <div class="team-card reveal">
+                        <img src="../assets/images/team_agramahick.jpg" alt="Аватар Agramahick" class="team-card-avatar">
+                        <div class="team-card-body">
+                            <h3 class="team-card-name">Agramahick</h3>
+                            <span class="team-card-role moderator" data-translate-key="team_role_moderator">Модератор</span>
+                            <p class="team-card-description" data-translate-key="team_desc_agramahick">Следит за порядком в сообществе и помогает новым участникам.</p>
+                        </div>
+                        <div class="team-card-socials">
+                            <a href="https://t.me/agramahick" target="_blank" aria-label="Telegram">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m22 2-7 20-4-9-9-4 20-7z"></path><path d="M22 2 11 13"></path></svg>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+        <footer>
+            <div class="footer-grid">
+                <div class="footer-about">
+                    <div class="footer-logo-group">
+                        <img src="../assets/images/logo.png" alt="Logo" class="footer-avatar">
+                        <span class="footer-logo-text">Vlesnix Guard</span>
+                    </div>
+                    <p data-translate-key="footer_disclaimer">Мы не являемся аффилированным лицом компании Discord Inc.</p>
+                    <span data-translate-key="footer_copyright">© 2025 Vlesnix Guard</span>
+                </div>
+                <div class="footer-links-group">
+                    <div class="footer-column">
+                        <h4 data-translate-key="footer_links">Ссылки</h4>
+                        <ul>
+                            <li><a href="https://discord.gg/pzD2w4x5Hk" target="_blank" data-translate-key="nav_support">Сервер поддержки</a></li>
+                        </ul>
+                    </div>
+                     <div class="footer-column">
+                        <h4 data-translate-key="footer_legal">Правовая информация</h4>
+                        <ul>
+                            <li><a href="/terms" data-translate-key="footer_terms">Условия использования</a></li>
+                            <li><a href="/privacy" data-translate-key="footer_privacy">Политика конфиденциальности</a></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="footer-actions">
+                    <div class="lang-select-container">
+                        <button id="lang-selector-button" aria-label="Выбор языка" data-translate-key="lang_select_label" data-translate-type="aria-label" aria-haspopup="true" aria-expanded="false">
+                            <span id="current-lang-name">Русский</span>
+                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="chevron-icon"><polyline points="6 9 12 15 18 9"></polyline></svg>
+                        </button>
+                        <div id="lang-selector-dropdown" class="lang-selector-dropdown">
+                            <a href="#" class="lang-option" data-lang="ru">Русский</a>
+                            <a href="#" class="lang-option" data-lang="en">English</a>
+                        </div>
+                    </div>
+                    <div class="settings-container">
+                        <button id="settings-button" class="settings-button" aria-label="Настройки сайта">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"></circle><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"></path></svg>
+                        </button>
+                        <div id="settings-panel" class="settings-panel">
+                            <div class="setting-item">
+                                <label for="particles-toggle">Particles</label>
+                                <label class="switch">
+                                    <input type="checkbox" id="particles-toggle">
+                                    <span class="slider round"></span>
+                                </label>
+                            </div>
+                            <div class="setting-item">
+                                <label for="cursor-toggle">Sticky Cursor</label>
+                                <label class="switch">
+                                    <input type="checkbox" id="cursor-toggle">
+                                    <span class="slider round"></span>
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+                    <button id="theme-switcher" class="theme-switcher" aria-label="Сменить тему">
+                        <span class="theme-icon-sun"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"></circle><line x1="12" y1="1" x2="12" y2="3"></line><line x1="12" y1="21" x2="12" y2="23"></line><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line><line x1="1" y1="12" x2="3" y2="12"></line><line x1="21" y1="12" x2="23" y2="12"></line><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line></svg></span>
+                        <span class="theme-icon-moon"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path></svg></span>
+                    </button>
+                </div>
+            </div>
+        </footer>
+    </div>
+    <div class="cookie-consent-banner" id="cookie-consent-banner">
+        <div class="cookie-consent-content">
+            <p class="cookie-text" data-translate-key="cookie_text">Мы используем файлы cookie для улучшения вашего опыта. Оставаясь на сайте, вы соглашаетесь с нашей <a href="/privacy" target="_blank" data-translate-key="cookie_privacy_link">политикой конфиденциальности</a>.</p>
+            <div class="cookie-actions">
+                <button class="cookie-btn" id="cookie-accept-btn" data-translate-key="cookie_accept">Принять</button>
+                <button class="cookie-btn secondary" id="cookie-decline-btn" data-translate-key="cookie_decline">Отклонить</button>
+            </div>
+        </div>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/particles.js@2.0.0/particles.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.9.1/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.9.1/ScrollTrigger.min.js"></script>
+    <script src="../js/main.js" type="module"></script>
+</body>
+</html>

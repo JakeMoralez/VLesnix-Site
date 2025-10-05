@@ -1,5 +1,4 @@
 
-
 <!DOCTYPE html>
 <html lang="ru">
 <head>
@@ -70,42 +69,7 @@
                     </div>
                 </div>
 
-                <template id="news-editor-template">
-                    <div class="news-card news-editor-card">
-                        <form novalidate>
-                            <div class="form-group">
-                                <label for="news-title">Заголовок темы</label>
-                                <input type="text" id="news-title" required>
-                            </div>
-                            <div class="form-group">
-                                <label for="news-content">Сообщение</label>
-                                <textarea id="news-content"></textarea>
-                            </div>
-                            <div class="form-row">
-                                <div class="form-group">
-                                    <label>Теги</label>
-                                    <div class="tag-selection">
-                                        <label class="tag-checkbox"><input type="checkbox" name="tags" value="major" data-text="Главное"><span class="tag tag-major">Главное</span></label>
-                                        <label class="tag-checkbox"><input type="checkbox" name="tags" value="feature" data-text="Функции"><span class="tag tag-feature">Функции</span></label>
-                                        <label class="tag-checkbox"><input type="checkbox" name="tags" value="security" data-text="Безопасность"><span class="tag tag-security">Безопасность</span></label>
-                                        <label class="tag-checkbox"><input type="checkbox" name="tags" value="fix" data-text="Исправления"><span class="tag tag-fix">Исправления</span></label>
-                                        <label class="tag-checkbox"><input type="checkbox" name="tags" value="update" data-text="Улучшения"><span class="tag tag-update">Улучшения</span></label>
-                                    </div>
-                                </div>
-                                <div class="form-group">
-                                    <label for="news-date">Дата публикации</label>
-                                    <input type="datetime-local" id="news-date" required>
-                                </div>
-                            </div>
-                            <div class="editor-footer">
-                                <p id="form-error" class="form-error-message"></p>
-                                <button type="button" class="cta-button-secondary cancel-news-btn">Отмена</button>
-                                <button type="submit" class="cta-button">Опубликовать</button>
-                            </div>
-                        </form>
-                    </div>
-                </template>
-
+                <div id="editor-container-placeholder"></div>
                 <div class="news-grid" id="news-grid">
                     <div class="loader-container">
                         <div class="spinner"></div>
@@ -186,6 +150,44 @@
             </div>
         </footer>
     </div>
+
+    <template id="news-editor-template">
+        <div class="news-editor-instance">
+            <form novalidate class="news-editor-form">
+                <div class="form-group">
+                    <label for="news-title-editor">Заголовок темы</label>
+                    <input type="text" id="news-title-editor" required>
+                </div>
+                <div class="form-group">
+                    <label for="news-content-editor">Сообщение</label>
+                    <textarea id="news-content-editor"></textarea>
+                </div>
+                <div class="form-row">
+                    <div class="form-group">
+                        <label>Теги</label>
+                        <div class="tag-selection">
+                            <label class="tag-checkbox"><input type="checkbox" name="tags" value="major" data-text="Главное"><span class="tag tag-major">Главное</span></label>
+                            <label class="tag-checkbox"><input type="checkbox" name="tags" value="feature" data-text="Функции"><span class="tag tag-feature">Функции</span></label>
+                            <label class="tag-checkbox"><input type="checkbox" name="tags" value="security" data-text="Безопасность"><span class="tag tag-security">Безопасность</span></label>
+                            <label class="tag-checkbox"><input type="checkbox" name="tags" value="fix" data-text="Исправления"><span class="tag tag-fix">Исправления</span></label>
+                            <label class="tag-checkbox"><input type="checkbox" name="tags" value="update" data-text="Улучшения"><span class="tag tag-update">Улучшения</span></label>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="news-date-editor">Дата публикации</label>
+                        <input type="datetime-local" id="news-date-editor" required>
+                    </div>
+                </div>
+                <div class="editor-footer">
+                    <p class="form-error-message"></p>
+                    <div class="editor-actions">
+                        <button type="button" class="cta-button-secondary cancel-edit-btn">Отмена</button>
+                        <button type="submit" class="cta-button">Сохранить</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </template>
 
     <div class="cookie-consent-banner" id="cookie-consent-banner">
         <div class="cookie-consent-content">

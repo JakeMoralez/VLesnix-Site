@@ -1,160 +1,373 @@
-/* For pages like Terms, Privacy */
+/* ============================================= */
+/* ==       CONTENT PAGE & PROFILE STYLES     == */
+/* ============================================= */
 .content-page-container {
-    max-width: 800px;
+    max-width: 1000px;
     margin: 0 auto;
-    position: relative;
 }
-.content-page-container h2, .content-page-container h3 {
+#page-content-container h2, #page-content-container h3 {
     font-family: var(--font-accent);
 }
-.content-page-container h3 {
+#page-content-container h3 {
     margin-top: 2rem;
 }
-.content-page-container ul {
+#page-content-container ul {
     padding-left: 20px;
 }
-.content-page-container li {
+#page-content-container li {
     margin-bottom: 0.5rem;
 }
-
-
-/* For Profile Page */
 .profile-page .content-page-container {
     display: flex;
     justify-content: center;
     align-items: center;
-    max-width: 100%; /* Override max-width for centering */
+    max-width: 100%;
 }
-
 .profile-card {
-    width: 100%;
-    max-width: 500px;
-    background-color: var(--bg-content);
-    border: 1px solid var(--border-color);
-    border-radius: 16px;
-    box-shadow: 0 10px 40px rgba(0,0,0,0.1);
-    overflow: hidden;
+    width: 100%; max-width: 500px; background-color: var(--bg-content); border: 1px solid var(--border-color);
+    border-radius: 16px; box-shadow: 0 10px 40px rgba(0,0,0,0.1); overflow: hidden;
 }
 .profile-card-banner {
-    height: 120px;
-    background: linear-gradient(90deg, var(--cta-color-start), var(--cta-color-end));
+    height: 120px; background: linear-gradient(90deg, var(--cta-color-start), var(--cta-color-end));
 }
 .profile-card-header {
-    position: relative;
-    text-align: center;
-    padding: 0 2rem 1.5rem;
-    margin-top: -64px;
+    position: relative; text-align: center; padding: 0 2rem 1.5rem; margin-top: -64px;
 }
 .profile-card-avatar {
-    width: 128px;
-    height: 128px;
-    border-radius: 50%;
-    border: 6px solid var(--bg-content);
-    margin-bottom: 1rem;
+    width: 128px; height: 128px; border-radius: 50%; border: 6px solid var(--bg-content); margin-bottom: 1rem;
 }
 .profile-card-header h1 {
-    font-family: var(--font-accent);
-    font-size: 2rem;
-    margin: 0;
+    font-family: var(--font-accent); font-size: 2rem; margin: 0;
 }
 .profile-card-userid {
-    font-size: 0.9rem;
-    color: var(--text-secondary);
-    margin-top: 0.25rem;
+    font-size: 0.9rem; color: var(--text-secondary); margin-top: 0.25rem;
 }
 .profile-card-body {
-    padding: 1rem 2rem 2rem;
-    text-align: center;
+    padding: 1rem 2rem 2rem; text-align: center;
 }
-.profile-card-body p {
-    margin-bottom: 1.5rem;
-}
-.profile-card-actions {
-    display: flex;
-    flex-direction: column;
-    gap: 0.75rem;
-}
+.profile-card-body p { margin-bottom: 1.5rem; }
+.profile-card-actions { display: flex; flex-direction: column; gap: 0.75rem; }
 
-
-/* --- Admin Page Editor --- */
-#admin-edit-container {
-    position: absolute;
-    top: 0;
-    right: 0;
-}
-
-.content-editor-overlay {
-    position: fixed;
-    top: 0;
-    left: 0;
+/* Styles for rendered tables */
+#page-content-container table {
     width: 100%;
-    height: 100%;
-    background-color: rgba(0, 0, 0, 0.7);
-    backdrop-filter: blur(8px);
-    -webkit-backdrop-filter: blur(8px);
-    z-index: 3000;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    opacity: 0;
-    visibility: hidden;
-    transition: opacity var(--transition-smooth), visibility var(--transition-smooth);
+    border-collapse: collapse;
+    margin: 1.5rem 0;
+    font-size: 0.95rem;
 }
-.content-editor-overlay.active {
-    opacity: 1;
-    visibility: visible;
-}
-.content-editor {
-    width: 90%;
-    height: 90%;
-    max-width: 1200px;
-    background-color: var(--bg);
-    border-radius: 16px;
+#page-content-container th, #page-content-container td {
     border: 1px solid var(--border-color);
-    box-shadow: 0 15px 40px rgba(0,0,0,0.3);
-    display: flex;
-    flex-direction: column;
-    transform: scale(0.95);
-    transition: transform var(--transition-smooth);
+    padding: 0.75rem;
+    text-align: left;
 }
-.content-editor-overlay.active .content-editor {
-    transform: scale(1);
+#page-content-container th {
+    background-color: var(--bg);
+    font-weight: 600;
 }
-.content-editor-header {
+#page-content-container tr:nth-child(even) {
+    background-color: rgba(138, 146, 177, 0.05);
+}
+
+
+/* ============================================= */
+/* ==        NEW ADMIN EDITOR STYLES          == */
+/* ============================================= */
+
+/* --- Admin Controls Bar (Floating Toast Style) --- */
+.admin-controls-bar {
+    position: fixed;
+    bottom: 2rem;
+    right: 2rem;
+    background-color: var(--header-bg); /* Use semi-transparent bg for blur */
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border: 1px solid var(--border-color);
+    border-radius: 12px; /* Softer corners for toast */
+    padding: 0.75rem 1rem;
     display: flex;
-    justify-content: space-between;
     align-items: center;
-    padding: 1rem 1.5rem;
-    border-bottom: 1px solid var(--border-color);
-    flex-shrink: 0;
+    gap: 1.5rem;
+    z-index: 1050;
+    box-shadow: 0 5px 25px rgba(0,0,0,0.2);
+    transition: all var(--transition-smooth);
 }
-.content-editor-header h3 {
-    margin: 0;
-    font-family: var(--font-accent);
+.admin-status {
+    font-size: 0.9rem;
+    font-weight: 500;
+    color: var(--text-primary);
+    padding: 0 0.5rem;
+    min-width: 120px;
+    text-align: center;
+    transition: color var(--transition-fast);
 }
-.content-editor-body {
-    flex-grow: 1;
-    padding: 1rem;
-    overflow: hidden; /* EasyMDE will handle its own scroll */
+.admin-status:empty {
+    display: none;
+}
+.admin-status.success { color: #2ecc71; }
+.admin-status.error { color: var(--danger-color); }
+
+.admin-actions {
+    display: flex;
+    gap: 0.5rem;
+}
+
+/* Remove borders from buttons inside the bar to avoid "double border" effect */
+.admin-actions .cta-button,
+.admin-actions .cta-button-secondary {
+    border: none;
+    box-shadow: none;
+    padding: 0.6rem 1.25rem;
+    font-size: 0.9rem;
+    border-radius: 8px;
+}
+
+/* Re-apply correct background colors as borders are gone */
+.admin-actions .cta-button {
+    background: var(--cta-color-start);
+    color: #fff;
+}
+.admin-actions .cta-button:hover {
+    background: var(--cta-color-end);
+    color: #fff;
+}
+.admin-actions .cta-button-secondary {
+    background: var(--panel-bg);
+}
+.admin-actions .cta-button-secondary:hover {
+    background: var(--border-color);
+}
+.admin-actions .cta-button-secondary.danger {
+    background: transparent;
+    color: var(--danger-border-color);
+}
+.admin-actions .cta-button-secondary.danger:hover {
+    background: var(--danger-bg-hover);
+    color: var(--danger-hover-color);
+}
+
+/* The standalone edit button should keep its original look */
+#admin-edit-btn.cta-button-secondary {
+    width: 44px;
+    height: 44px;
+    padding: 0;
+    border-radius: 50%;
+    border: 1px solid var(--border-color);
+    background: transparent;
+}
+#admin-edit-btn.cta-button-secondary:hover {
+    background-color: var(--panel-bg);
+    border-color: var(--cta-color-start);
+}
+
+
+/* --- Robust Flexbox Layout for Editor --- */
+
+.legal-page main {
     display: flex;
     flex-direction: column;
 }
-.content-editor-body .EasyMDEContainer,
-.content-editor-body .CodeMirror {
+.content-page-container {
+    display: flex;
+    flex-direction: column;
     flex-grow: 1;
+}
+
+#page-editor-container {
+    display: none;
+}
+#page-content-container {
+    display: block;
+}
+
+.content-page-container.editing-mode #page-content-container {
+    display: none;
+}
+.content-page-container.editing-mode #page-editor-container {
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+}
+
+/* ============================================= */
+/* ==     EasyMDE Editor Styles Overrides     == */
+/* ============================================= */
+
+#page-editor-container .EasyMDEContainer {
+    display: flex !important;
+    flex-direction: column !important;
+    flex-grow: 1 !important;
+    height: auto !important;
+    border-radius: 12px;
+    border: none;
+    background-color: var(--bg-content);
+}
+
+#page-editor-container .EasyMDEContainer:focus-within,
+#page-editor-container .EasyMDEContainer.active {
+    box-shadow: none !important;
+    outline: none !important;
+}
+
+#page-editor-container .EasyMDEContainer .editor-toolbar {
+    flex-shrink: 0;
+    border-top-left-radius: 11px;
+    border-top-right-radius: 11px;
+    border-bottom: 1px solid var(--border-color);
+    padding: 4px;
+    background-color: var(--bg);
+}
+
+#page-editor-container .EasyMDEContainer .CodeMirror {
+    flex-grow: 1 !important;
+    height: auto !important;
+    border: none !important;
+    border-bottom-left-radius: 11px;
+    border-bottom-right-radius: 11px;
+    padding: 1rem;
+    background-color: var(--bg-content);
+    color: var(--text-primary);
+}
+
+#page-editor-container .EasyMDEContainer .editor-toolbar button {
+    border: none !important;
+    border-radius: 4px;
+    transition: background-color var(--transition-fast), color var(--transition-fast), transform var(--transition-fast);
+    color: var(--text-secondary) !important;
+}
+#page-editor-container .EasyMDEContainer .editor-toolbar button:hover {
+    background: var(--border-color) !important;
+    color: var(--text-primary) !important;
+    transform: translateY(-1px);
+}
+#page-editor-container .EasyMDEContainer .editor-toolbar button.active {
+    background: var(--border-color) !important;
+    color: var(--text-primary) !important;
+}
+#page-editor-container .EasyMDEContainer .editor-toolbar .separator {
+    border-left: 1px solid var(--border-color);
+    border-right: none !important;
+    margin: 4px 8px !important;
+}
+#page-editor-container .EasyMDEContainer .cm-s-easymde {
+    font-family: var(--font-primary), sans-serif !important;
+    font-size: 1rem;
+    line-height: 1.6;
+}
+#page-editor-container .EasyMDEContainer .editor-statusbar {
+    display: none;
+}
+.EasyMDEContainer .CodeMirror-cursor { border-left: 1px solid var(--text-primary) !important; }
+.cm-s-easymde .cm-header { color: var(--cta-color-start); }
+.cm-s-easymde .cm-link { color: var(--cta-color-end); }
+.cm-s-easymde .cm-quote { color: #2ecc71; }
+
+
+/* --- [RADICAL FIX] Fullscreen & Side-by-Side Overrides --- */
+body.editor-fullscreen-active {
+    overflow: hidden !important;
+}
+body.editor-fullscreen-active header,
+body.editor-fullscreen-active footer,
+body.editor-fullscreen-active .admin-controls-bar {
+    display: none !important;
+}
+
+body.editor-fullscreen-active .EasyMDEContainer.fullscreen {
+    position: fixed !important;
+    top: 0 !important;
+    left: 0 !important;
+    right: 0 !important;
+    bottom: 0 !important;
+    width: 100% !important;
+    height: 100% !important;
+    background-color: var(--bg) !important;
+    border: none !important;
+    border-radius: 0 !important;
+    z-index: 9998;
+}
+
+/* Nuke all borders and outlines within the fullscreen editor */
+body.editor-fullscreen-active .EasyMDEContainer.fullscreen * {
+    border: none !important;
+    outline: none !important;
+    box-shadow: none !important;
+}
+
+/* Re-apply essential borders with !important */
+body.editor-fullscreen-active .EasyMDEContainer.fullscreen .editor-toolbar {
+    border-bottom: 1px solid var(--border-color) !important;
+}
+
+/* Enforce background colors */
+body.editor-fullscreen-active .EasyMDEContainer.fullscreen .editor-toolbar {
+    background-color: var(--bg) !important;
+    border-radius: 0 !important;
+}
+body.editor-fullscreen-active .EasyMDEContainer.fullscreen .CodeMirror {
+    background-color: var(--bg) !important;
     height: 100% !important;
 }
-.content-editor-footer {
-    padding: 1rem 1.5rem;
-    border-top: 1px solid var(--border-color);
-    display: flex;
-    justify-content: flex-end;
-    align-items: center;
-    gap: 1rem;
-    flex-shrink: 0;
+body.editor-fullscreen-active .EasyMDEContainer.fullscreen .editor-preview-side {
+    background-color: var(--bg) !important;
 }
-.editor-error-message {
-    color: var(--danger-color);
-    font-size: 0.9rem;
-    margin-right: auto;
+
+/* Fix sizing */
+body.editor-fullscreen-active .EasyMDEContainer.fullscreen.sided .CodeMirror {
+    width: 50% !important;
+}
+body.editor-fullscreen-active .EasyMDEContainer.fullscreen.sided .editor-preview-side {
+    width: 50% !important;
+    border-left: none !important;
+}
+/* --- End Radical Fix --- */
+
+
+.EasyMDEContainer .editor-preview,
+.EasyMDEContainer .editor-preview-side {
+    background: var(--bg) !important;
+    color: var(--text-primary);
+    padding: 1rem;
+}
+
+/* Custom scrollbar for preview panes */
+.EasyMDEContainer .editor-preview::-webkit-scrollbar,
+.EasyMDEContainer .editor-preview-side::-webkit-scrollbar {
+    -webkit-appearance: none;
+    width: 14px;
+    background-color: transparent;
+}
+.EasyMDEContainer .editor-preview::-webkit-scrollbar-track,
+.EasyMDEContainer .editor-preview-side::-webkit-scrollbar-track {
+    background-color: var(--bg);
+}
+.EasyMDEContainer .editor-preview::-webkit-scrollbar-thumb,
+.EasyMDEContainer .editor-preview-side::-webkit-scrollbar-thumb {
+    background-color: var(--border-color);
+    border-radius: 10px;
+    border: 4px solid var(--bg);
+    background-clip: content-box;
+    transition: background-color var(--transition-fast);
+}
+.EasyMDEContainer .editor-preview::-webkit-scrollbar-thumb:hover,
+.EasyMDEContainer .editor-preview-side::-webkit-scrollbar-thumb:hover {
+    background-color: var(--cta-color-start);
+}
+
+
+/* === CUSTOM SCROLLBAR for CodeMirror === */
+.EasyMDEContainer .CodeMirror-vscrollbar {
+    -webkit-appearance: none; width: 14px; background-color: transparent;
+}
+.EasyMDEContainer .CodeMirror-vscrollbar::-webkit-scrollbar {
+    -webkit-appearance: none; width: 14px;
+}
+.EasyMDEContainer .CodeMirror-vscrollbar::-webkit-scrollbar-track {
+    background-color: var(--bg-content);
+}
+.EasyMDEContainer .CodeMirror-vscrollbar::-webkit-scrollbar-thumb {
+    background-color: var(--border-color); border-radius: 10px; border: 4px solid var(--bg-content);
+    background-clip: content-box; transition: background-color var(--transition-fast);
+}
+.EasyMDEContainer .CodeMirror-vscrollbar::-webkit-scrollbar-thumb:hover {
+    background-color: var(--cta-color-start);
 }

@@ -10,12 +10,13 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    transition: opacity 0.5s ease;
+    transition: opacity 0.5s ease, visibility 0.5s ease;
 }
 
 .preloader.hidden {
     opacity: 0;
     pointer-events: none;
+    visibility: hidden;
 }
 
 .preloader-content {

@@ -1,7 +1,14 @@
 
 
+
 .dashboard-main {
     padding-top: 2rem;
+    opacity: 0;
+    transition: opacity 0.5s ease-in-out;
+}
+
+.dashboard-main.visible {
+    opacity: 1;
 }
 
 #dashboard-header .section-title {

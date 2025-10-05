@@ -8,15 +8,6 @@
     <title data-translate-key="title_team">Наша Команда — Vlesnix Guard</title>
     <link rel="icon" href="../assets/images/logo.png" type="image/png">
     <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
-    <script>
-      (function() {
-        try {
-          var theme = localStorage.getItem('theme');
-          var isDark = theme === 'dark' || (!theme && window.matchMedia('(prefers-color-scheme: dark)').matches);
-          document.documentElement.className = isDark ? 'dark-theme' : 'light-theme';
-        } catch (e) {}
-      })();
-    </script>
     <!-- CSS -->
     <link rel="stylesheet" href="../css/main.css">
     <link rel="stylesheet" href="../css/components/header.css">
@@ -25,9 +16,20 @@
     <link rel="stylesheet" href="../css/components/cursor.css">
     <link rel="stylesheet" href="../css/components/settings.css">
     <link rel="stylesheet" href="../css/components/dropdown.css">
+    <link rel="stylesheet" href="../css/components/modal.css">
+    <link rel="stylesheet" href="../css/components/buttons.css">
     <link rel="stylesheet" href="../css/pages/team.css">
 </head>
 <body class="team-page">
+    <script>
+      (function() {
+        try {
+          var theme = localStorage.getItem('theme');
+          var isDark = theme === 'dark' || (!theme && window.matchMedia('(prefers-color-scheme: dark)').matches);
+          document.body.classList.add(isDark ? 'dark-theme' : 'light-theme');
+        } catch (e) {}
+      })();
+    </script>
     <div class="sticky-cursor"></div>
     <div id="particles-bg"></div>
     <header>
@@ -54,57 +56,25 @@
                 <h1 class="section-title" data-translate-key="team_title">Наша Команда</h1>
                 <p class="section-subtitle reveal" data-translate-key="team_subtitle">Мы — команда энтузиастов, увлеченных созданием лучших инструментов для Discord сообществ.</p>
 
-                <div class="team-grid">
-                    <!-- Nesparks -->
-                    <div class="team-card reveal">
-                        <img src="../assets/images/team_nesparks.jpg" alt="Аватар Nesparks" class="team-card-avatar">
-                        <div class="team-card-body">
-                            <h3 class="team-card-name">Nesparks</h3>
-                            <span class="team-card-role founder" data-translate-key="team_role_founder">Основатель и Разработчик</span>
-                            <p class="team-card-description" data-translate-key="team_desc_nesparks">Создатель Vlesnix Guard, отвечает за архитектуру и основной функционал бота и веб-сайта.</p>
-                        </div>
-                        <div class="team-card-socials">
-                            <a href="https://github.com/Nesparks" target="_blank" aria-label="GitHub">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path></svg>
-                            </a>
-                            <a href="https://t.me/nesparks" target="_blank" aria-label="Telegram">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m22 2-7 20-4-9-9-4 20-7z"></path><path d="M22 2 11 13"></path></svg>
-                            </a>
-                        </div>
-                    </div>
+                <div id="admin-controls" style="display: none; text-align: center; margin-bottom: 2rem;">
+                    <button id="add-member-btn" class="cta-button">Добавить участника</button>
+                </div>
 
-                    <!-- Agat -->
-                    <div class="team-card reveal">
-                        <img src="../assets/images/team_agat.jpg" alt="Аватар Agat" class="team-card-avatar">
-                        <div class="team-card-body">
-                            <h3 class="team-card-name">Agat</h3>
-                            <span class="team-card-role moderator" data-translate-key="team_role_moderator">Модератор</span>
-                            <p class="team-card-description" data-translate-key="team_desc_agat">Обрабатывает обращения пользователей и помогает решать технические вопросы.</p>
-                        </div>
-                        <div class="team-card-socials">
-                            <a href="https://t.me/dinoagat" target="_blank" aria-label="Telegram">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m22 2-7 20-4-9-9-4 20-7z"></path><path d="M22 2 11 13"></path></svg>
-                            </a>
-                        </div>
-                    </div>
-
-                    <!-- Agramahick -->
-                    <div class="team-card reveal">
-                        <img src="../assets/images/team_agramahick.jpg" alt="Аватар Agramahick" class="team-card-avatar">
-                        <div class="team-card-body">
-                            <h3 class="team-card-name">Agramahick</h3>
-                            <span class="team-card-role moderator" data-translate-key="team_role_moderator">Модератор</span>
-                            <p class="team-card-description" data-translate-key="team_desc_agramahick">Следит за порядком в сообществе и помогает новым участникам.</p>
-                        </div>
-                        <div class="team-card-socials">
-                            <a href="https://t.me/agramahick" target="_blank" aria-label="Telegram">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m22 2-7 20-4-9-9-4 20-7z"></path><path d="M22 2 11 13"></path></svg>
-                            </a>
-                        </div>
-                    </div>
+                <div class="team-grid" id="team-grid">
+                    <div class="spinner" style="margin: 4rem auto; grid-column: 1 / -1;"></div>
                 </div>
             </div>
         </main>
+
+        <!-- New Save Order Toast -->
+        <div id="save-order-toast" class="save-order-toast">
+            <span>Порядок изменен</span>
+            <div class="toast-actions">
+                <button id="cancel-order-btn" class="toast-btn-cancel">Отменить</button>
+                <button id="save-order-btn" class="toast-btn-save">Сохранить порядок</button>
+            </div>
+        </div>
+
         <footer>
             <div class="footer-grid">
                 <div class="footer-about">
@@ -170,6 +140,77 @@
             </div>
         </footer>
     </div>
+
+    <div id="team-editor-modal-container"></div>
+    <template id="team-editor-template">
+        <div class="modal-overlay">
+            <div class="modal">
+                <div class="modal-header">
+                    <h2 id="editor-modal-title">Редактор</h2>
+                    <button class="modal-close-btn">&times;</button>
+                </div>
+                <form id="team-editor-form" novalidate>
+                    <div class="modal-body form-grid">
+                        <div class="form-col-left">
+                            <div class="form-group">
+                                <label>Аватар</label>
+                                <div class="avatar-uploader-new">
+                                     <div class="avatar-preview-wrapper" id="avatar-preview-wrapper">
+                                        <img id="avatar-preview" src="../assets/images/logo.png" alt="Avatar Preview">
+                                        <div class="avatar-upload-overlay">
+                                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="17 8 12 3 7 8"></polyline><line x1="12" y1="3" x2="12" y2="15"></line></svg>
+                                            <span>Загрузить</span>
+                                        </div>
+                                    </div>
+                                    <p class="helper-text">Нажмите, чтобы загрузить (до 5MB)</p>
+                                    <input type="file" id="team-avatar-file-input" accept="image/png, image/jpeg, image/webp, image/gif">
+                                    <input type="hidden" id="team-avatar-url-hidden">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-col-right">
+                             <div class="form-group">
+                                <label for="team-name-input">Имя</label>
+                                <input type="text" id="team-name-input" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="team-role-text-input">Текст роли</label>
+                                <input type="text" id="team-role-text-input" required>
+                            </div>
+                             <div class="form-group">
+                                 <label for="team-role-type-select">Тип роли (для стиля)</label>
+                                 <select id="team-role-type-select">
+                                     <option value="founder">Основатель (Founder)</option>
+                                     <option value="developer">Разработчик (Developer)</option>
+                                     <option value="designer">Дизайнер (Designer)</option>
+                                     <option value="support">Поддержка (Support)</option>
+                                     <option value="moderator" selected>Модератор (Moderator)</option>
+                                 </select>
+                            </div>
+                        </div>
+
+                        <div class="form-group" style="grid-column: 1 / -1;">
+                            <label for="team-description-textarea">Описание</label>
+                            <textarea id="team-description-textarea" required></textarea>
+                        </div>
+                        <div class="form-group social-links-editor" style="grid-column: 1 / -1;">
+                            <label>Социальные сети</label>
+                            <div id="social-links-container"></div>
+                            <button type="button" id="add-social-btn" class="cta-button-secondary">Добавить ссылку</button>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <p class="form-error-message"></p>
+                        <div class="modal-footer-actions">
+                            <button type="button" class="cta-button-secondary modal-cancel-btn">Отмена</button>
+                            <button type="submit" class="cta-button">Сохранить</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </template>
+
     <div class="cookie-consent-banner" id="cookie-consent-banner">
         <div class="cookie-consent-content">
             <p class="cookie-text" data-translate-key="cookie_text">Мы используем файлы cookie для улучшения вашего опыта. Оставаясь на сайте, вы соглашаетесь с нашей <a href="/privacy" target="_blank" data-translate-key="cookie_privacy_link">политикой конфиденциальности</a>.</p>
@@ -179,7 +220,7 @@
             </div>
         </div>
     </div>
-    <script src="https://cdn.jsdelivr.net/npm/particles.js@2.0.0/particles.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sortablejs@latest/Sortable.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.9.1/gsap.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.9.1/ScrollTrigger.min.js"></script>
     <script src="../js/main.js" type="module"></script>

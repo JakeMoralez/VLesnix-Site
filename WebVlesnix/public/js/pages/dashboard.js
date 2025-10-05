@@ -1,6 +1,3 @@
-
-
-import { currentUser } from '../core/state.js';
 import { translations } from '../data/translations.js';
 
 let allServers = [];
@@ -59,6 +56,13 @@ function renderServers(filter) {
         const iconUrl = server.icon
             ? `https://cdn.discordapp.com/icons/${server.id}/${server.icon}.webp?size=64`
             : `https://cdn.discordapp.com/embed/avatars/${(BigInt(server.id) >> 22n) % 5n}.png`;
+            
+        const memberCountHtml = server.isManaged && server.memberCount ? `
+            <div class="server-card-stats">
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path><circle cx="9" cy="7" r="4"></circle><path d="M23 21v-2a4 4 0 0 0-3-3.87"></path><path d="M16 3.13a4 4 0 0 1 0 7.75"></path></svg>
+                <span>${server.memberCount.toLocaleString('ru-RU')}</span>
+            </div>
+        ` : '';
 
         if (server.isManaged) {
             card.href = `/manage`; // Should be /manage?id=${server.id} in a real app
@@ -69,7 +73,10 @@ function renderServers(filter) {
         card.innerHTML = `
             <div class="server-card-content">
                 <img src="${iconUrl}" alt="${translations[lang]['dash_server_icon_alt']} ${server.name}" class="server-card-avatar">
-                <h3 class="server-card-name">${server.name}</h3>
+                <div class="server-card-info">
+                    <h3 class="server-card-name">${server.name}</h3>
+                    ${memberCountHtml}
+                </div>
             </div>
             <div class="server-card-action">
                 <span>${actionText}</span>
@@ -102,16 +109,16 @@ function setupServerSearch() {
     });
 }
 
-export async function initDashboardPage() {
+export async function initDashboardPage(user) {
     const preloader = document.getElementById('dashboard-preloader');
     const mainContent = document.querySelector('.dashboard-main');
     const dashboardHeader = document.getElementById('dashboard-header');
     const lang = localStorage.getItem('language') || 'ru';
 
-    if (currentUser && dashboardHeader) {
+    if (user && dashboardHeader) {
         dashboardHeader.innerHTML = `
             <h1 class="section-title">
-                <span data-translate-key="dash_welcome">${translations[lang]['dash_welcome']}</span> ${currentUser.username}!
+                <span data-translate-key="dash_welcome">${translations[lang]['dash_welcome']}</span> ${user.username}!
             </h1>
             <p class="section-subtitle" data-translate-key="dash_subtitle">${translations[lang]['dash_subtitle']}</p>
         `;
@@ -140,6 +147,9 @@ export async function initDashboardPage() {
         if (preloader && mainContent) {
             preloader.classList.add('hidden');
             mainContent.classList.add('visible');
+            setTimeout(() => {
+                if (preloader) preloader.remove();
+            }, 500);
         }
     }
 }

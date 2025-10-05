@@ -1,3 +1,4 @@
+
 export const translations = {
     en: {
         "title_main": "Vlesnix Guard — Reliable protector for your Discord server",

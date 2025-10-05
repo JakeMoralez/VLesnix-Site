@@ -1,99 +1,107 @@
-let pageKey = '';
-let editor = { overlay: null, mde: null, errorEl: null, saveBtn: null };
-let initialContent = '';
 
+// Global variables for the page
+let pageKey = '';
+let currentContent = '';
+let mdeInstance = null;
+let isEditing = false;
+
+// DOM Element references
+let pageContainer, contentContainer, editorContainer, adminBar, editBtn, saveBtn, cancelBtn, statusIndicator;
+
+// Fetches content from the API and renders it
 async function fetchPageContent() {
-    const container = document.getElementById('page-content-container');
-    if (!container) return;
-    container.innerHTML = `<div class="spinner" style="margin: 4rem auto;"></div>`;
+    if (!contentContainer) return;
+    contentContainer.innerHTML = `<div class="spinner" style="margin: 4rem auto;"></div>`;
 
     try {
         const response = await fetch(`/api/pages/${pageKey}`);
-        if (!response.ok) throw new Error('Failed to load page content.');
+        if (!response.ok) throw new Error('Не удалось загрузить контент страницы.');
         const data = await response.json();
-        
-        initialContent = data.content; // Store raw markdown for editor
 
-        const renderedMarkdown = window.marked ? window.marked.parse(data.content) : data.content;
-        container.innerHTML = renderedMarkdown;
-
+        currentContent = data.content; // Store raw markdown
+        renderMarkdown(currentContent);
     } catch (error) {
         console.error(error);
-        container.innerHTML = `<p style="text-align: center; color: var(--danger-color);">${error.message}</p>`;
+        contentContainer.innerHTML = `<p style="text-align: center; color: var(--danger-color);">${error.message}</p>`;
     }
 }
 
-function openEditor() {
+// Renders markdown string to HTML
+function renderMarkdown(markdown) {
+    if (window.marked) {
+        contentContainer.innerHTML = window.marked.parse(markdown);
+    } else {
+        contentContainer.textContent = markdown; // Fallback
+    }
+}
+
+// Switches to editing mode by toggling a class and initializing the editor
+function startEditing() {
+    if (isEditing) return;
     if (typeof EasyMDE === 'undefined') {
-        alert('Editor component is not available. Please refresh the page.');
+        alert('Компонент редактора не загружен. Пожалуйста, обновите страницу.');
         return;
     }
-    if (editor.overlay) return;
+    isEditing = true;
 
-    document.body.insertAdjacentHTML('beforeend', `
-        <div class="content-editor-overlay" id="content-editor-overlay">
-            <div class="content-editor">
-                <div class="content-editor-header">
-                    <h3>Редактирование страницы</h3>
-                    <button class="modal-close-btn" id="editor-close-btn">&times;</button>
-                </div>
-                <div class="content-editor-body">
-                    <textarea id="content-editor-textarea"></textarea>
-                </div>
-                <div class="content-editor-footer">
-                    <p class="editor-error-message" id="editor-error-message"></p>
-                    <button class="cta-button-secondary" id="editor-cancel-btn">Отмена</button>
-                    <button class="cta-button" id="editor-save-btn">Сохранить</button>
-                </div>
-            </div>
-        </div>
-    `);
+    // The key change: toggle a class. CSS will handle making the editor container visible.
+    pageContainer.classList.add('editing-mode');
 
-    editor.overlay = document.getElementById('content-editor-overlay');
-    editor.errorEl = document.getElementById('editor-error-message');
-    editor.saveBtn = document.getElementById('editor-save-btn');
-
-    editor.mde = new EasyMDE({
-        element: document.getElementById('content-editor-textarea'),
-        initialValue: initialContent,
-        spellChecker: false,
-        minHeight: '100%',
-    });
-
-    editor.overlay.classList.add('active');
-    document.body.classList.add('modal-open');
-
-    document.getElementById('editor-close-btn').onclick = closeEditor;
-    document.getElementById('editor-cancel-btn').onclick = closeEditor;
-    editor.saveBtn.onclick = saveContent;
-    editor.overlay.onclick = (e) => {
-        if (e.target === editor.overlay) closeEditor();
-    };
-}
-
-function closeEditor() {
-    if (!editor.overlay) return;
-    editor.overlay.classList.remove('active');
-    document.body.classList.remove('modal-open');
-    if (editor.mde) {
-        editor.mde.toTextArea();
-        editor.mde = null;
+    // Now that the container is visible (display: flex), we can safely initialize the editor.
+    if (!mdeInstance) {
+        const textarea = editorContainer.querySelector('#content-editor-textarea');
+        mdeInstance = new EasyMDE({
+            element: textarea,
+            initialValue: currentContent,
+            spellChecker: false,
+            toolbar: [
+                'bold', 'italic', 'strikethrough', '|',
+                'heading-1', 'heading-2', 'heading-3', '|',
+                'quote', 'unordered-list', 'ordered-list', '|',
+                'link', 'image', 'code', 'table', '|',
+                'preview', 'side-by-side', 'fullscreen'
+            ],
+            onToggleFullScreen: (fullscreen) => {
+                document.body.classList.toggle('editor-fullscreen-active', fullscreen);
+            },
+        });
     }
-    setTimeout(() => {
-        editor.overlay.remove();
-        editor = { overlay: null, mde: null, errorEl: null, saveBtn: null };
-    }, 300);
+
+    updateAdminBarUI();
 }
 
+// Switches back to view mode, destroying the editor instance
+function stopEditing(revertChanges = false) {
+    if (!isEditing) return;
+    isEditing = false;
+
+    pageContainer.classList.remove('editing-mode');
+
+    // Properly destroy the MDE instance to prevent memory leaks and UI glitches
+    if (mdeInstance) {
+        mdeInstance.toTextArea();
+        mdeInstance = null;
+    }
+
+    // If canceling, re-render the original, unmodified content
+    if (revertChanges) {
+        renderMarkdown(currentContent);
+    }
+
+    updateAdminBarUI();
+}
+
+// Saves the content via API call
 async function saveContent() {
-    if (!editor.mde || !editor.saveBtn) return;
+    if (!isEditing || !mdeInstance) return;
 
-    const originalBtnText = editor.saveBtn.textContent;
-    editor.saveBtn.disabled = true;
-    editor.saveBtn.textContent = 'Сохранение...';
-    editor.errorEl.textContent = '';
+    const originalBtnContent = saveBtn.innerHTML;
+    saveBtn.disabled = true;
+    saveBtn.innerHTML = '<div class="spinner" style="width:20px; height: 20px; border-width: 2px; margin: 0 auto;"></div>';
+    statusIndicator.textContent = 'Сохранение...';
+    statusIndicator.classList.remove('error', 'success');
 
-    const newContent = editor.mde.value();
+    const newContent = mdeInstance.value();
 
     try {
         const response = await fetch(`/api/pages/${pageKey}`, {
@@ -104,20 +112,58 @@ async function saveContent() {
 
         const result = await response.json();
         if (!response.ok) {
-            throw new Error(result.error || 'Server error occurred.');
+            throw new Error(result.error || 'Произошла ошибка сервера.');
         }
 
-        closeEditor();
-        await fetchPageContent();
+        currentContent = newContent; // Update the stored content
+        renderMarkdown(newContent);   // Render the new content to the view
+
+        statusIndicator.textContent = 'Сохранено!';
+        statusIndicator.classList.add('success');
+
+        stopEditing(false); // Switch UI to view mode immediately
+
+        // Clear status message after a few seconds
+        setTimeout(() => {
+            // Check if we are still in view mode and the element exists before clearing
+            if (!isEditing && document.getElementById('admin-status-indicator')) {
+                statusIndicator.textContent = '';
+                statusIndicator.classList.remove('success');
+            }
+        }, 3000);
 
     } catch (error) {
         console.error('Save failed:', error);
-        editor.errorEl.textContent = `Ошибка: ${error.message}`;
-        editor.saveBtn.disabled = false;
-        editor.saveBtn.textContent = originalBtnText;
+        statusIndicator.textContent = `Ошибка: ${error.message}`;
+        statusIndicator.classList.add('error');
+    } finally {
+        saveBtn.disabled = false;
+        saveBtn.innerHTML = originalBtnContent;
     }
 }
 
+
+// Updates the floating admin bar based on the current mode
+function updateAdminBarUI() {
+    if (isEditing) {
+        editBtn.style.display = 'none';
+        cancelBtn.style.display = 'inline-flex';
+        saveBtn.style.display = 'inline-flex';
+        statusIndicator.textContent = ''; // Don't show "Edit mode" text to allow centering
+        statusIndicator.classList.remove('error', 'success');
+    } else {
+        editBtn.style.display = 'inline-flex';
+        cancelBtn.style.display = 'none';
+        saveBtn.style.display = 'none';
+        // Status is handled by saveContent, so we only clear it if there's no temp message
+        if (!statusIndicator.classList.contains('success') && !statusIndicator.classList.contains('error')) {
+            statusIndicator.textContent = '';
+        }
+    }
+}
+
+
+// Checks if the user is an admin and shows the admin bar
 async function checkAdminAndSetupEditor() {
     try {
         const response = await fetch('/api/is-admin');
@@ -125,20 +171,29 @@ async function checkAdminAndSetupEditor() {
         const { isAdmin } = await response.json();
 
         if (isAdmin) {
-            const container = document.getElementById('admin-edit-container');
-            if (container) {
-                container.innerHTML = `
-                    <button id="edit-page-btn" class="cta-button-secondary">Редактировать страницу</button>
-                `;
-                document.getElementById('edit-page-btn').addEventListener('click', openEditor);
-            }
+            adminBar.style.display = 'flex';
+            editBtn.addEventListener('click', startEditing);
+            cancelBtn.addEventListener('click', () => stopEditing(true));
+            saveBtn.addEventListener('click', saveContent);
         }
     } catch (error) {
-        console.warn('Could not check admin status:', error);
+        console.warn('Не удалось проверить статус администратора:', error);
     }
 }
 
+// Caches references to DOM elements
+function assignElements() {
+    pageContainer = document.getElementById('content-page-container');
+    contentContainer = document.getElementById('page-content-container');
+    editorContainer = document.getElementById('page-editor-container');
+    adminBar = document.getElementById('admin-controls-bar');
+    editBtn = document.getElementById('admin-edit-btn');
+    saveBtn = document.getElementById('admin-save-btn');
+    cancelBtn = document.getElementById('admin-cancel-btn');
+    statusIndicator = document.getElementById('admin-status-indicator');
+}
 
+// Main initialization function for the page
 export async function initContentPage() {
     const path = window.location.pathname;
     if (path.includes('/privacy')) {
@@ -146,9 +201,11 @@ export async function initContentPage() {
     } else if (path.includes('/terms')) {
         pageKey = 'terms';
     } else {
-        return;
+        return; // Not a content page
     }
-    
+
+    assignElements();
+
     if (window.marked) {
         window.marked.setOptions({ breaks: true, gfm: true });
     }

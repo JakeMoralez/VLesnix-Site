@@ -33,7 +33,7 @@ function addEventListeners() {
     if (!cursor) return;
 
     const growSelector = '.logo, footer a, .team-card-socials a';
-    const stickSelector = '.nav-center a, .cta-button, .cta-button-secondary, .cta-login-button, .cookie-btn, .server-card, .profile-avatar-btn, .theme-switcher, #lang-selector-button, .lang-option, .dropdown-item, .docs-sidebar a, .error-actions a, .tab-button, #server-search-input, #docs-search-input, .settings-button, .switch, .filter-tag-button, #news-search-input';
+    const stickSelector = '.nav-center a, .cta-button, .cta-button-secondary, .cta-login-button, .cookie-btn, .server-card, .profile-avatar-btn, .theme-switcher, #lang-selector-button, .lang-option, .dropdown-item, .error-actions a, .tab-button, #server-search-input, .settings-button, .switch, .filter-tag-button, #news-search-input';
 
     let lastTarget = null;
 

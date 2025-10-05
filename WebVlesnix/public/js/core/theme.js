@@ -1,38 +1,74 @@
-
 export function setupParticles(theme) {
-    if (typeof particlesJS === 'undefined') return;
-    
-    const colors = {
-        dark: { particles: '#bf95ff', lines: '#9d50ff' },
-        light: { particles: '#2c3e50', lines: '#6c5ce7' }
-    };
-    const currentColors = colors[theme];
+    if (typeof particlesJS === 'undefined') {
+        console.warn('particles.js not loaded, skipping setup.');
+        return;
+    }
+
+    // Always destroy existing instance to re-init with new theme settings if needed
     if (window.pJSDom && window.pJSDom[0]) {
         window.pJSDom[0].pJS.fn.vendors.destroypJS();
         window.pJSDom = [];
     }
 
-    const isManagePage = document.body.classList.contains('manage-page');
+    // Only run particles if enabled by user
+    if (localStorage.getItem('particles_enabled') === 'false') {
+        return;
+    }
 
-    const particleConfig = {
+    const particlesConfig = {
         "particles": {
-            "number": { "value": isManagePage ? 30 : 60, "density": { "enable": true, "value_area": 800 } },
-            "color": { "value": currentColors.particles },
+            "number": {
+                "value": 40,
+                "density": { "enable": true, "value_area": 800 }
+            },
+            "color": { "value": "#7B2FF7" },
             "shape": { "type": "circle" },
             "opacity": { "value": 0.5, "random": true },
-            "size": { "value": 3, "random": true },
-            "line_linked": { "enable": true, "distance": 150, "color": currentColors.lines, "opacity": 0.2, "width": 1 },
-            "move": { "enable": true, "speed": isManagePage ? 2 : 2.5, "direction": "none", "random": true, "straight": false, "out_mode": "out" }
+            "size": { "value": 2, "random": true },
+            "line_linked": {
+                "enable": true,
+                "distance": 150,
+                "color": "#7B2FF7",
+                "opacity": 0.2,
+                "width": 1
+            },
+            "move": {
+                "enable": true,
+                "speed": 1,
+                "direction": "none",
+                "random": true,
+                "straight": false,
+                "out_mode": "out",
+            }
         },
         "interactivity": {
-            "detect_on": "window",
-            "events": { "onhover": { "enable": true, "mode": "repulse" }, "onclick": { "enable": false }, "resize": true },
-            "modes": { "repulse": { "distance": 100, "duration": 0.4 } }
+            "detect_on": "canvas",
+            "events": {
+                "onhover": { "enable": true, "mode": ["repulse", "grab"] },
+                "onclick": { "enable": true, "mode": "push" },
+                "resize": true
+            },
+            "modes": {
+                "grab": {
+                    "distance": 200,
+                    "line_linked": { "opacity": 0.5 }
+                },
+                "repulse": { "distance": 250, "duration": 0.4 },
+                "push": { "particles_nb": 4 },
+            }
         },
         "retina_detect": true
     };
 
-    particlesJS('particles-bg', particleConfig);
+    const particleColor = theme === 'dark' ? '#7B2FF7' : '#8E2DE2';
+    const lineColor = theme === 'dark' ? '#7B2FF7' : '#8E2DE2';
+    const lineOpacity = theme === 'dark' ? 0.2 : 0.4;
+
+    particlesConfig.particles.color.value = particleColor;
+    particlesConfig.particles.line_linked.color = lineColor;
+    particlesConfig.particles.line_linked.opacity = lineOpacity;
+
+    particlesJS('particles-bg', particlesConfig);
 }
 
 export function applyTheme(theme, animate, event) {
@@ -48,17 +84,13 @@ export function applyTheme(theme, animate, event) {
         });
         transition.ready.then(() => {
             localStorage.setItem('theme', theme);
-            if (localStorage.getItem('particles_enabled') !== 'false') {
-                setupParticles(theme);
-            }
+            setupParticles(theme); // Re-initialize particles for new theme
         });
     } else {
         document.body.classList.toggle('dark-theme', isDark);
         document.body.classList.toggle('light-theme', !isDark);
         localStorage.setItem('theme', theme);
-        if (localStorage.getItem('particles_enabled') !== 'false') {
-            setupParticles(theme);
-        }
+        setupParticles(theme); // Re-initialize particles for new theme
     }
 }
 

@@ -21,7 +21,7 @@ function setupDropdown() {
 
 export async function updateAuthUI() {
     const authContainer = document.getElementById('auth-container');
-    if (!authContainer) return false;
+    if (!authContainer) return null;
 
     try {
         const response = await fetch('/api/user');
@@ -74,18 +74,18 @@ export async function updateAuthUI() {
                 </div>
             `;
             setupDropdown();
-            return true;
+            return user;
 
         } else {
             setCurrentUser(null);
             authContainer.innerHTML = `<a href="/login" class="cta-login-button" data-translate-key="login_button">${translations[lang]['login_button']}</a>`;
-            return false;
+            return null;
         }
     } catch (error) {
         setCurrentUser(null);
         const lang = localStorage.getItem('language') || 'ru';
         authContainer.innerHTML = `<a href="/login" class="cta-login-button" data-translate-key="login_button">${translations[lang]['login_button']}</a>`;
         console.warn("Auth server is not available. Displaying fallback login button.");
-        return false;
+        return null;
     }
 }
